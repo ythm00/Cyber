@@ -4,7 +4,7 @@
 # you may not use this file except in compliance with the License.
 #
 """ Userbot module for getting information about the server. """
-
+import time
 from asyncio import create_subprocess_exec as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 from os import remove
@@ -15,7 +15,8 @@ from git import Repo
 from telethon import version
 from telethon.errors.rpcerrorlist import MediaEmptyError
 
-from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, bot
+from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, bot, StarTime
+
 from userbot.events import register
 
 # ================= CONSTANT =================
@@ -25,6 +26,35 @@ repo = Repo()
 
 
 @register(outgoing=True, pattern=r"^\.sysd$")
+=======
+async def get_readable_time(seconds: int) -> str:
+    count = 0
+    up_time = ""
+    time_list = []
+    time_suffix_list = ["s", "m", "h", "days"]
+
+    while count < 4:
+        count += 1
+        if count < 3:
+            remainder, result = divmod(seconds, 60)
+        else:
+            remainder, result = divmod(seconds, 24)
+        if seconds == 0 and remainder == 0:
+            break
+        time_list.append(int(result))
+        seconds = int(remainder)
+
+    for x in range(len(time_list)):
+        time_list[x] = str(time_list[x]) + time_suffix_list[x]
+    if len(time_list) == 4:
+        up_time += time_list.pop() + ", "
+
+    time_list.reverse()
+    up_time += ":".join(time_list)
+
+    return up_time
+
+@register(outgoing=True, pattern="^.sysd$")
 async def sysdetails(sysd):
     """For .sysd command, get system info using neofetch."""
     if not sysd.text[0].isalpha() and sysd.text[0] not in ("/", "#", "@", "!"):
@@ -155,6 +185,22 @@ async def amireallyalive(alive):
 
 
 @register(outgoing=True, pattern=r"^\.aliveu")
+    uptime = await get_readable_time((time.time() - StartTime)) 
+    output = (f"`My Detail Ubot `\n"
+             f"┏━━━━━━━━━━━━━━━━━━━━━━━━\n"
+             f"┣[ 🧭 `Bot uptime :` {uptime}\n"
+             f"┣[ 👤 `User       :` {DEFAULTUSER}\n"
+             f"┣[ 🐍 `Python     :` v{python_version()}\n"
+             f"┣[ ⚙️ `Telethon   :` v{version.__version__}\n"
+             f"┣[ 👁‍🗨 `Username   :` {ALIVE_USERNAME}\n"
+             f"┣[ 🎮 `Running on :` {UPSTREAM_REPO_BRANCH}\n"
+             f"┗━━━━━━━━━━━━━━━━━━━━━━━━\n"
+             f"`All modules loaded with ({MODULESTR}) errors`")
+    await bot.send_file(alive.chat_id, logo, caption=output)
+    await alive.delete()
+
+
+@register(outgoing=True, pattern="^.aliveu")
 async def amireallyaliveuser(username):
     """For .aliveu command, change the username in the .alive command."""
     message = username.text
