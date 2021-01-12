@@ -16,6 +16,7 @@ from sys import version_info
 from time import sleep
 import re
 
+from pathlib import Path
 from sys import version_info
 from logging import basicConfig, getLogger, INFO, DEBUG
 from distutils.util import strtobool as sb
@@ -32,6 +33,10 @@ from dotenv import load_dotenv
 from telethon import version
 from telethon.sync import TelegramClient, custom, events
 from telethon.sessions import StringSession
+
+from .storage import Storage
+
+STORAGE = (lambda n: Storage(Path("data") / n))
 
 load_dotenv("config.env")
 
