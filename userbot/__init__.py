@@ -18,6 +18,7 @@ from sys import version_info
 from logging import basicConfig, getLogger, INFO, DEBUG
 from distutils.util import strtobool as sb
 from math import ceil
+from platform import python_version
 
 from dotenv import load_dotenv
 from pylast import LastFMNetwork, md5
@@ -25,6 +26,8 @@ from pySmartDL import SmartDL
 from requests import get
 from telethon import TelegramClient, version
 
+from dotenv import load_dotenv
+from telethon import version
 from telethon.sync import TelegramClient, custom, events
 from telethon.sessions import StringSession
 
@@ -305,6 +308,17 @@ try:
 except AttributeError:
     pass
 
+async def send_alive_status():
+    if BOTLOG_CHATID:
+        message = (
+            "**Bot is up and running!**\n\n"
+            f"**Telethon:** {version.__version__}\n"
+            f"**Python:** {python_version()}\n"
+            f"**User:** {ALIVE_NAME or 'Set `ALIVE_NAME` ConfigVar!'}"
+        )
+        await bot.send_message(BOTLOG_CHATID, message)
+        return True
+
 
 
 # Global Variables
@@ -485,3 +499,8 @@ with bot:
             "valid entity. Check your environment variables/config.env file."
         )
         quit(1)
+
+    try:
+        bot.loop.run_until_complete(send_alive_status())
+    except BaseException:
+        pass
