@@ -7,6 +7,8 @@
 
 import os
 import signal
+import sys
+
 from distutils.util import strtobool as sb
 from logging import DEBUG, INFO, basicConfig, getLogger
 from platform import python_version
@@ -198,6 +200,15 @@ for binary, path in binaries.items():
     downloader = SmartDL(binary, path, progress_bar=False)
     downloader.start()
     os.chmod(path, 0o755)
+
+
+def shutdown_bot(signum, frame):
+    LOGS.info("Received SIGTERM.")
+    bot.disconnect()
+    sys.exit(143)
+
+
+signal.signal(signal.SIGTERM, shutdown_bot)
 
 
 def shutdown_bot(signum, frame):
