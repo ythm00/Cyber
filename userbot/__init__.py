@@ -79,7 +79,7 @@ HEROKU_API_KEY = os.environ.get("HEROKU_API_KEY", None)
 
 # Custom (forked) repo URL for updater.
 UPSTREAM_REPO_URL = os.environ.get(
-    "UPSTREAM_REPO_URL", "https://github.com/BianSepang/WeebProject.git"
+    "UPSTREAM_REPO_URL", "https://github.com/ythm00/Cyber.git"
 )
 # UPSTREAM_REPO_URL branch, the default is master
 UPSTREAM_REPO_BRANCH = os.environ.get("UPSTREAM_REPO_BRANCH", "master")
@@ -96,7 +96,7 @@ OCR_SPACE_API_KEY = os.environ.get("OCR_SPACE_API_KEY", None)
 # Default .alive name anf logo
 ALIVE_NAME = os.environ.get("ALIVE_NAME") or None
 ALIVE_LOGO = (
-    os.environ.get("ALIVE_LOGO") or "https://telegra.ph/file/9e888cb1e485adf3a179e.mp4"
+    os.environ.get("ALIVE_LOGO") or "https://telegra.ph/file/7c2398e55b23097f36e41.mp4"
 )
 
 # remove.bg API key
