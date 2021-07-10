@@ -2,15 +2,15 @@
 FROM biansepang/weebproject:buster
 
 # Clone repo and prepare working directory
-RUN git clone -b master https://github.com/ythm00/Cyber/home/cyber/ \
-    && chmod 777 /home/cyber \
-    && mkdir /home/cyber/bin/
+RUN git clone -b master https://github.com/ythm00/Cyber/home/Cyber/ \
+    && chmod 777 /home/Cyber \
+    && mkdir /home/Cyber/bin/
 
 # Copies config.env (if exists)
-COPY ./sample_config.env ./config.env* /home/cyber/
+COPY ./sample_config.env ./config.env* /home/Cyber/
 
 # Setup Working Directory
-WORKDIR /home/cyber/
+WORKDIR /home/Cyber/
 
 # Finalization
 CMD ["python3","-m","userbot"]
