@@ -75,9 +75,7 @@ def errors_handler(func):
         except BaseException:
             if BOTLOG_CHATID is None:
                 return
-
                     date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-
                     text = "**USERBOT ERROR REPORT**\n"
                     link = "[Cyber](https://t.me/RythmSupportGroup)"
                     text += "If you want to, you can report it"
