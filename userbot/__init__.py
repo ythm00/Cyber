@@ -6,7 +6,6 @@
 """ Userbot initialization. """
 
 import os
-<<<<<<< HEAD
 import signal
 from distutils.util import strtobool as sb
 from logging import DEBUG, INFO, basicConfig, getLogger
@@ -20,17 +19,14 @@ from sys import version_info
 from logging import basicConfig, getLogger, INFO, DEBUG
 from distutils.util import strtobool as sb
 from math import ceil
->>>>>>> e80ef21 (UserButt: Introduce inline bot helper)
 
 from dotenv import load_dotenv
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
 from requests import get
-<<<<<<< HEAD
 from telethon import TelegramClient, version
-=======
+
 from telethon.sync import TelegramClient, custom, events
->>>>>>> e80ef21 (UserButt: Introduce inline bot helper)
 from telethon.sessions import StringSession
 
 load_dotenv("config.env")
@@ -274,7 +270,6 @@ async def check_botlog_chatid():
         quit(1)
 
 
-<<<<<<< HEAD
 with bot:
     try:
         bot.loop.run_until_complete(check_botlog_chatid())
@@ -311,8 +306,8 @@ try:
 except AttributeError:
     pass
 
-=======
->>>>>>> e80ef21 (UserButt: Introduce inline bot helper)
+
+
 # Global Variables
 COUNT_MSG = 0
 USERS = {}

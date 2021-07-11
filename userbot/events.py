@@ -19,7 +19,7 @@ from userbot import BOTLOG_CHATID, LOGSPAMMER, bot
 
 
 def register(**args):
-<<<<<<< HEAD
+
     """Register a new event."""
     pattern = args.get("pattern", None)
     disable_edited = args.get("disable_edited", False)
@@ -32,7 +32,7 @@ def register(**args):
 
     if pattern is not None and not pattern.startswith("(?i)"):
         args["pattern"] = "(?i)" + pattern
-=======
+
     """ Register a new event. """
     pattern = args.get('pattern', None)
     disable_edited = args.get('disable_edited', False)
@@ -46,7 +46,6 @@ def register(**args):
 
     if pattern is not None and not pattern.startswith('(?i)'):
         args['pattern'] = '(?i)' + pattern
->>>>>>> e80ef21 (UserButt: Introduce inline bot helper)
 
     if "disable_edited" in args:
         del args["disable_edited"]

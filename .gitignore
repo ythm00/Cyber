@@ -10,7 +10,7 @@ userbot/modules/sql_helper/__pycache__/*
 .progress
 .vscode/*
 bin/*
-<<<<<<< HEAD
+TG_BOT_TOKEN.session
 
 # ignore virtualenv files
 
@@ -31,7 +31,3 @@ pip-selfcheck.json
 
 *-cyber.log
 
-###
-=======
-TG_BOT_TOKEN.session 
->>>>>>> e80ef21 (UserButt: Introduce inline bot helper)
