@@ -1,5 +1,7 @@
 # Cyber Userbot
 
+![Cyber](https://telegra.ph/file/b05a86dc5adafcd3de0cc.gif)
+
 <p align="center">
     <a href="https://app.codacy.com/gh/BianSepang/WeebProject/dashboard"> <img src="https://img.shields.io/codacy/grade/a723cb464d5a4d25be3152b5d71de82d?color=blue&logo=codacy&style=flat-square" alt="Codacy" /></a><br>
     <a href="https://github.com/ythm00/Cyber/stargazers"> <img src="https://img.shields.io/github/stars/ythm00/Cyber?logo=github&style=flat-square" alt="Stars" /></a>
