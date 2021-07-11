@@ -283,7 +283,7 @@ with bot:
 async def update_restart_msg(chat_id, msg_id):
     DEFAULTUSER = ALIVE_NAME or "Set `ALIVE_NAME` ConfigVar!"
     message = (
-        f"**WeebProject is back up and running!**\n\n"
+        f"**Cyber is back up and running!**\n\n"
         f"**Telethon :** __{version.__version__}__\n"
         f"**Python :** __{python_version()}__\n"
         f"**User :** __{DEFAULTUSER}__"
@@ -384,7 +384,7 @@ with bot:
                 )
             elif query.startswith("tb_btn"):
                 result = builder.article(
-                    "UserButt Helper",
+                    "Cyber Helper",
                     text="List of Modules",
                     buttons=[],
                     link_preview=True)
