@@ -18,7 +18,7 @@ logging.basicConfig(
     level=logging.WARNING)
 
 
-@bot.on(cyber_cmd(outgoing=True, pattern=r"helpme"))
+@register(outgoing=True, pattern="^.helpme")
 async def yardim(event):
     tgbotusername = BOT_USERNAME
     if tgbotusername and BOT_TOKEN:
