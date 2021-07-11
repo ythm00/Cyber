@@ -2,7 +2,7 @@
 FROM irhamfadzillah/cyber:buster
 
 # Clone repo and prepare working directory
-RUN git clone -b master https://github.com/ythm00/Cyber /home/Cyber/
+RUN git clone -b staging https://github.com/ythm00/Cyber /home/Cyber/
 RUN mkdir /home/Cyber/bin/
 WORKDIR /home/Cyber/
 
