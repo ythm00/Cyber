@@ -75,63 +75,60 @@ def errors_handler(func):
         except BaseException:
             if BOTLOG_CHATID is None:
                 return
-                    date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-                    text = "**USERBOT ERROR REPORT**\n"
-                    link = "[Cyber](https://t.me/RythmSupportGroup)"
-                    text += "If you want to, you can report it"
-                    text += f"- just forward this message to {link}.\n"
-                    text += "Nothing is logged except the fact of error and date."
+            date = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+            ftext = "\nDisclaimer:\nThis file is pasted only here ONLY here,"
+            ftext += "\nwe logged only fact of error and date,"
+            ftext += "\nwe respect your privacy,"
+            ftext += "\nyou may not report this error if you've"
+            ftext += "\nany confidential data here, no one will see your data\n\n"
+            ftext += "--------BEGIN USERBOT TRACEBACK LOG--------"
+            ftext += "\nDate: " + date
+            ftext += "\nGroup ID: " + str(errors.chat_id)
+            ftext += "\nSender ID: " + str(errors.sender_id)
+            ftext += "\n\nEvent Trigger:\n"
+            ftext += str(errors.text)
+            ftext += "\n\nTraceback info:\n"
+            ftext += str(traceback.format_exc())
+            ftext += "\n\nError text:\n"
+            ftext += str(sys.exc_info()[1])
+            new = {
+                "error": str(
+                    sys.exc_info()[1]),
+                "date": datetime.datetime.now()}
+            ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
 
-                    ftext = "========== DISCLAIMER =========="
-                    ftext += "\nThis file uploaded ONLY here,"
-                    ftext += "\nwe logged only fact of error and date,"
-                    ftext += "\nwe respect your privacy,"
-                    ftext += "\nyou may not report this error if you've"
-                    ftext += "\nany confidential data here, no one will see your data\n"
-                    ftext += "================================\n\n"
-                    ftext += "--------BEGIN USERBOT TRACEBACK LOG--------\n"
-                    ftext += "\nDate: " + date
-                    ftext += "\nChat ID: " + str(check.chat_id)
-                    ftext += "\nSender ID: " + str(check.sender_id)
-                    ftext += "\n\nEvent Trigger:\n"
-                    ftext += str(check.text)
-                    ftext += "\n\nTraceback info:\n"
-                    ftext += str(format_exc())
-                    ftext += "\n\nError text:\n"
-                    ftext += str(sys.exc_info()[1])
-                    ftext += "\n\n--------END USERBOT TRACEBACK LOG--------"
+            command = 'git log --pretty=format:"%an: %s" -5'
 
-                    command = 'git log --pretty=format:"%an: %s" -10'
+            ftext += "\n\n\nLast 5 commits:\n"
 
-                    ftext += "\n\n\nLast 10 commits:\n"
+            process = await asyncio.create_subprocess_shell(
+                command, stdout=asyncio.subprocess.PIPE, stderr=asyncio.subprocess.PIPE
+            )
+            stdout, stderr = await process.communicate()
+            result = str(stdout.decode().strip()) + \
+                str(stderr.decode().strip())
+            ftext += result
 
-                    process = await asyncsubshell(
-                        command, stdout=asyncsub.PIPE, stderr=asyncsub.PIPE
+            if LOGSPAMMER:
+                await error.edit(
+                    "`Sorry, my userbot has crashed.\nThe error logs are stored in the userbot's log chat.`"
+                )
+
+                log = codecs.open("error.log", "r", encoding="utf-8")
+                data = log.read()
+                key = (
+                    requests.post(
+                        "https://nekobin.com/api/documents",
+                        json={"content": data},
                     )
-                    stdout, stderr = await process.communicate()
-                    result = str(stdout.decode().strip()) + str(stderr.decode().strip())
-
-                    ftext += result
-
-                    with open("error.txt", "w+") as file:
-                        file.write(ftext)
-
-                    if LOGSPAMMER:
-                        await check.respond(
-                            "`Sorry, my userbot has crashed."
-                            "\nThe error logs are stored in the userbot's log chat.`"
-                        )
-
-                        async with ClientSession() as ses, ses.post(
-                            "https://api.katb.in/api/paste", json={"content": ftext}
-                        ) as resp:
-                            url = (
-                                f"https://katb.in/{(await resp.json()).get('paste_id')}"
-                            )
-                        text += f"\n\nPasted to : [Katb.in]({url})"
-
-                        await check.client.send_file(send_to, "error.txt", caption=text)
-                        remove("error.txt")
+                    .json()
+                    .get("result")
+                    .get("key")
+                )
+                url = f"https://nekobin.com/raw/{key}"
+                anu = f"{text}\n`Here the error:`\nPasted to: [Nekobin]({url})"
+                await check.client.send_message(send_to, anu)
+                remove("error.log")
                  
                 
 class Loader:
