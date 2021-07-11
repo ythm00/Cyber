@@ -12,7 +12,6 @@ from logging import DEBUG, INFO, basicConfig, getLogger
 from platform import python_version
 from sys import version_info
 from time import sleep
-=======
 import re
 
 from sys import version_info
