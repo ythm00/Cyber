@@ -43,7 +43,6 @@ async def fban(event):
     try:
         fban_id = await event.client.get_peer_id(fban_id)
 
-    except:
     except Exception:
         pass
 
