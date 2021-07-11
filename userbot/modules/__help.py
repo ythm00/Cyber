@@ -10,7 +10,7 @@
 import logging
 
 from userbot import BOT_USERNAME, BOT_TOKEN
-from userbot.events import register
+from userbot.events import cyber_cmd
 from telethon.errors.rpcerrorlist import BotInlineDisabledError
 
 logging.basicConfig(

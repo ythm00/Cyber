@@ -35,7 +35,8 @@ from telethon.tl.types import (
 )
 
 from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
-from userbot.events import register
+from userbot.events import cyber_cmd
+from userbot import CUSTOM_CMD as cyber
 
 # =================== CONSTANT ===================
 PP_TOO_SMOL = "`The image is too small`"

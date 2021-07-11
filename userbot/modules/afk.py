@@ -10,7 +10,8 @@ from random import randint
 
 from telethon.events import StopPropagation
 
-from userbot.events import register
+from userbot.events import cyber_cmd
+from userbot import CUSTOM_CMD as cyber
 
 from userbot import (  # noqa pylint: disable=unused-import isort:skip
     AFKREASON,
