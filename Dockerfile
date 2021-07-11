@@ -1,16 +1,16 @@
 # Using Python Slim-Buster
-FROM biansepang/weebproject:buster
+FROM irhamfadzillah/cyber:buster
 
 # Clone repo and prepare working directory
-RUN git clone -b master https://github.com/ythm00/Cyber/home/Cyber/ \
-    && chmod 777 /home/Cyber \
-    && mkdir /home/Cyber/bin/
+RUN git clone -b master https://github.com/ythm00/Cyber/home/cyber/ \
+    && chmod 777 /home/vyber \
+    && mkdir /home/cyber/bin/
 
 # Copies config.env (if exists)
-COPY ./sample_config.env ./config.env* /home/Cyber/
+COPY ./sample_config.env ./config.env* /home/cyber/
 
 # Setup Working Directory
-WORKDIR /home/Cyber/
+WORKDIR /home/cyber/
 
 # Finalization
 CMD ["python3","-m","userbot"]
