@@ -2,15 +2,14 @@
 FROM irhamfadzillah/cyber:buster
 
 # Clone repo and prepare working directory
-RUN git clone -b master https://github.com/ythm00/Cyber/home/Cyber/ \
-    && chmod 777 /home/Cyber \
-    && mkdir /home/cyber/bin/
-
-# Copies config.env (if exists)
-COPY ./sample_config.env ./config.env* /home/Cyber/
-
-# Setup Working Directory
+RUN git clone -b master https://github.com/ythm00/Cyber /home/Cyber/
+RUN mkdir /home/Cyber/bin/
 WORKDIR /home/Cyber/
 
+# Make open port TCP
+EXPOSE 80 443
+
+# Finalization
+CMD ["python3","-m","userbot"]
 # Finalization
 CMD ["python3","-m","userbot"]
