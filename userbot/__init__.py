@@ -190,6 +190,10 @@ USR_TOKEN = os.environ.get("USR_TOKEN_UPTOBOX", None)
 BOT_TOKEN = os.environ.get("BOT_TOKEN") or None
 BOT_USERNAME = os.environ.get("BOT_USERNAME") or None
 
+# Custom Handler command
+CUSTOM_CMD = os.environ.get("CUSTOM_CMD") or "."
+
+CMD_HELP = {}
 
 # Setting Up CloudMail.ru and MEGA.nz extractor binaries,
 # and giving them correct perms to work properly.
