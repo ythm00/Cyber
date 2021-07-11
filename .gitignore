@@ -28,6 +28,6 @@ pip-selfcheck.json
 
 # ignore log files
 
-*-weebproject.log
+*-cyber.log
 
 ###
