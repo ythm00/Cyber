@@ -362,7 +362,7 @@ with bot:
         @tgbot.on(events.NewMessage(pattern="/start"))
         async def handler(event):
             if event.message.from_id != uid:
-                await event.reply("I'm [UserButt](https://github.com/KeselekPermen69/userbutt) modules helper...\nplease make your own bot, don't use mine 😋")
+                await event.reply("I'm [Cyber](https://github.com/ythm00/Cyber) modules helper...\nplease make your own bot, don't use mine 😋")
             else:
                 await event.reply(f"`Hey there {ALIVE_NAME}\n\nI work for you :)`")
 
@@ -396,10 +396,10 @@ with bot:
                         [
                             custom.Button.url(
                                 "GitHub Repo",
-                                "https://github.com/KeselekPermen69/userbutt"),
+                                "https://github.com/ythm00/Cyber"),
                             custom.Button.url(
                                 "Support",
-                                "https://t.me/UserBotIndo")],
+                                "https://t.me/RythmSupportGroup")],
                     ],
                     link_preview=False,
                 )
