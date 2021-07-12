@@ -83,7 +83,7 @@ async def _(c):
         if not x.bot:
             users.append(x.id)
     botman = list(user_list(users, 200))
-    for p in hmm:
+    for p in botman:
         try:
             await c.client(invitetovc(call=await get_call(c), users=p))
             z += 200
