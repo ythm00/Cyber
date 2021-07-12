@@ -72,7 +72,7 @@ async def _(c):
             z += 6
         except BaseException:
             pass
-    await c.edit(f"`✅ Successfully invite {z} to voice`")
+    await c.edit(f"`{z}` `✅ Successfully invite to voice`")
 
 
 CMD_HELP.update(
