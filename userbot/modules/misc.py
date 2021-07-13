@@ -108,14 +108,16 @@ async def repeat(rep):
 async def repo_is_here(wannasee):
     """For .repo command, just returns the repo URL."""
     await wannasee.edit(
-        "**Hey**, __I am using__ 🔥 **Cyber** 🔥"
+        "**Hey**, __I am using__ 🔥 **Cyber** 🔥\n"
+    "                      \n"
+    "__Durable as a Cyber__\n"
+    "                      \n"
+"• **Cyber version** : `{repo.active_branch.name}`\n"
+"• **license** : [GNU GPL v3.0](https://github.com/ythm00/Cyber/blob/master/LICENSE)\n"
+"• **copyright** : [Cyber](https://github.com/ythm00)\n"
+"• **repo** : [Cyber](https://github.com/ythm00/Cyber)\n"
 
-    "__Durable as a Cyber__"
-
-"• **Cyber version** : `{repo.active_branch.name}`"
-"• **license** : [GNU GPL v3.0](https://github.com/ythm00/Cyber/blob/master/LICENSE)"
-"• **copyright** : [Cyber](https://github.com/ythm00)"
-"• **repo** : [Userge](https://github.com/ythm00/Cyber")
+  )
 
 
 
