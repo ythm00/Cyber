@@ -15,7 +15,7 @@ from git import Repo
 from telethon import version
 from telethon.errors.rpcerrorlist import MediaEmptyError
 
-from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, bot, StarTime
+from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, bot, StartTime
 
 from userbot.events import register
 
