@@ -186,6 +186,7 @@ async def pipcheck(pip):
 @register(outgoing=True, pattern=r"^\.(alive|on)$")
 async def amireallyalive(alive):
     """For .alive command, check if the bot is running."""
+    uptime = await get_readable_time((time.time() - StartTime))
     logo = ALIVE_LOGO
     output = (
         f"**Cyber** is running on `{repo.active_branch.name}`\n"
@@ -207,22 +208,6 @@ async def amireallyalive(alive):
             )
     else:
         await alive.edit(output)
-
-
-@register(outgoing=True, pattern=r"^\.aliveu")
-    uptime = await get_readable_time((time.time() - StartTime)) 
-    output = (f"`My Detail Ubot `\n"
-             f"┏━━━━━━━━━━━━━━━━━━━━━━━━\n"
-             f"┣[ 🧭 `Bot uptime :` {uptime}\n"
-             f"┣[ 👤 `User       :` {DEFAULTUSER}\n"
-             f"┣[ 🐍 `Python     :` v{python_version()}\n"
-             f"┣[ ⚙️ `Telethon   :` v{version.__version__}\n"
-             f"┣[ 👁‍🗨 `Username   :` {ALIVE_USERNAME}\n"
-             f"┣[ 🎮 `Running on :` {UPSTREAM_REPO_BRANCH}\n"
-             f"┗━━━━━━━━━━━━━━━━━━━━━━━━\n"
-             f"`All modules loaded with ({MODULESTR}) errors`")
-    await bot.send_file(alive.chat_id, logo, caption=output)
-    await alive.delete()
 
 
 @register(outgoing=True, pattern="^.aliveu")
