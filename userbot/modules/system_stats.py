@@ -15,7 +15,7 @@ from git import Repo
 from telethon import version
 from telethon.errors.rpcerrorlist import MediaEmptyError
 
-from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, bot
+from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, bot, StartTime
 
 from userbot.events import register
 
@@ -24,6 +24,33 @@ DEFAULTUSER = str(ALIVE_NAME) if ALIVE_NAME else uname().node
 repo = Repo()
 # ============================================
 
+
+async def get_readable_time(seconds: int) -> str:
+    count = 0
+    up_time = ""
+    time_list = []
+    time_suffix_list = ["s", "m", "h", "days"]
+
+    while count < 4:
+        count += 1
+        if count < 3:
+            remainder, result = divmod(seconds, 60)
+        else:
+            remainder, result = divmod(seconds, 24)
+        if seconds == 0 and remainder == 0:
+            break
+        time_list.append(int(result))
+        seconds = int(remainder)
+
+    for x in range(len(time_list)):
+        time_list[x] = str(time_list[x]) + time_suffix_list[x]
+    if len(time_list) == 4:
+        up_time += time_list.pop() + ", "
+
+    time_list.reverse()
+    up_time += ":".join(time_list)
+
+    return up_time
 
 @register(outgoing=True, pattern="^.sysd$")
 async def sysdetails(sysd):
@@ -135,13 +162,17 @@ async def amireallyalive(alive):
     uptime = await get_readable_time((time.time() - StartTime))
     logo = ALIVE_LOGO
     output = (
-        f"**Cyber** is running on `{repo.active_branch.name}`\n"
-        "`====================================`\n"
-        f"🐍 `Python         :` v{python_version()}\n"
-        f"⚙️ `Telethon       :` v{version.__version__}\n"
-        f"👤 `User           :` {DEFAULTUSER}\n"
-        "`====================================`\n"
-    )
+        f"**⏱ Uptime** : `{uptime}`\n"
+        f"**💡 Version** : `{repo.active_branch.name}`\n"
+        f"**👤 User** : `{DEFAULTUSER}`\n"
+        f"                           \n"
+        f"                           \n"
+        f"**__Python__**: `{python_version()}`\n"
+        f"**__Telethon__**: `{version.__version__}\n"
+        f"""\n
+        f"🎖**[GNU GPL v3.0](https://github.com/ythm00/Cyber/blob/master/LICENSE)** | 👤 **[Cyber](https://github.com/ythm00)** |  🧪 **[Repo](https://github.com/ythm00/Cyber)"
+        
+)        
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO
