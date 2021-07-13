@@ -168,7 +168,6 @@ async def amireallyalive(alive):
         f"**💡 Version** : `{repo.active_branch.name}`\n"
         f"**👤 User** : `{DEFAULTUSER}`\n"
         f"                           \n"
-        f"                           \n"
         f"**__Python__**: `{python_version()}`\n"
         f"**__Telethon__**: `{version.__version__}\n"
         f"                           \n"
