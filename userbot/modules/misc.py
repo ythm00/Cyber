@@ -107,7 +107,17 @@ async def repeat(rep):
 @register(outgoing=True, pattern=r"^\.repo$")
 async def repo_is_here(wannasee):
     """For .repo command, just returns the repo URL."""
-    await wannasee.edit("Here is my [Repo](https://github.com/ythm00/Cyber)")
+    await wannasee.edit(
+        "**Hey**, __I am using__ 🔥 **Cyber** 🔥"
+
+    "__Durable as a Cyber__"
+
+"• **Cyber version** : `{repo.active_branch.name}`"
+"• **license** : [GNU GPL v3.0](https://github.com/ythm00/Cyber/blob/master/LICENSE)"
+"• **copyright** : [Cyber](https://github.com/ythm00)"
+"• **repo** : [Userge](https://github.com/ythm00/Cyber")
+
+
 
 
 @register(outgoing=True, pattern=r"^\.raw$")
