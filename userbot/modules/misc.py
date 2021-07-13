@@ -12,10 +12,10 @@ from os import environ, execle
 from random import randint
 from time import sleep
 
+from git import Repo
 from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
 from userbot.events import register
 from userbot.utils import time_formatter
-
 
 repo = Repo()
 
