@@ -5,6 +5,8 @@
 #
 """ Userbot module for getting information about the server. """
 
+import time
+
 from asyncio import create_subprocess_exec as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 from os import remove
