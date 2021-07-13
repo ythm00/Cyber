@@ -14,4 +14,3 @@ WORKDIR /home/cyber/
 
 # Finalization
 CMD ["python3","-m","userbot"]
-© 2021 GitHub, Inc.
