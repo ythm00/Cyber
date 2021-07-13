@@ -17,6 +17,8 @@ from userbot.events import register
 from userbot.utils import time_formatter
 
 
+repo = Repo()
+
 @register(outgoing=True, pattern=r"^\.random")
 async def randomise(items):
     """For .random command, get a random item from the list of items."""
