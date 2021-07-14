@@ -2,7 +2,7 @@
 
 FROM irhamfadzillah/cyber:buster
 
-RUN git clone -b Man-Userbot https://github.com/ythm00/Cyber /root/userbot
+RUN git clone -b master https://github.com/ythm00/Cyber /root/userbot
 RUN mkdir /root/userbot/.bin
 WORKDIR /root/userbot
 
