@@ -1,7 +1,7 @@
 {
   "name": "Cyber UserBot",
   "description": "[Cyber] A modular Telegram userbot running on Python 3.8",
-  "logo": "https://telegra.ph/file/97a72ff8c012185982776.jpg"
+  "logo": "https://telegra.ph/file/97a72ff8c012185982776.jpg",
   "keywords": [
     "telegram",
     "userbot",
