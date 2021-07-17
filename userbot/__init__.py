@@ -489,7 +489,7 @@ with bot:
                                         )
                                       
                                      
-        @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
+        @lynx.tgbot.on(events.InlineQuery)  # pylint:disable=E0602
         async def inline_handler(event):
             builder = event.builder
             result = None
@@ -497,15 +497,15 @@ with bot:
             if event.query.user_id == uid and query.startswith("@UserButt"):
                 buttons = paginate_help(0, dugmeler, "helpme")
                 result = builder.photo(
-                file=Clogo,
-                link_preview=False,
+                    file=Clogo,
+                    link_preview=False,
                     "Please Use Only With .help Command",
                     text="{}\nTotal loaded modules: {}".format(
                         "Cyber modules helper.\n",
                         len(dugmeler),
                     ),
                     buttons=buttons,
-                ) 
+                )
             elif query.startswith("tb_btn"):
                 result = builder.article(
                     "Cyber Helper",
