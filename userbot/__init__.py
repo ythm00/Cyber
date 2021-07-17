@@ -478,7 +478,7 @@ with lynx:
                     f"Haii [{get_display_name(u)}](tg://user?id={u.id}) My Name is **Cyber**\n"
                     f"and For Maintaining Your Group.\n"
                     f"I was **Created by :** @SyndicateTwenty4 For Various Userbots on Github.\n")
-                await lynx.tgbot.send_file(event.chat_id, file=lynxlogo,
+                await tgbot.send_file(event.chat_id, file=cyberlogo,
                                       caption=text,
                                       buttons=[
                                           [
@@ -486,7 +486,7 @@ with lynx:
                                                   text="Repo",
                                                   url="https://github.com/ythm00/Cyber"
                                             ]
-                                        ),                                                                             
+                                        )
                                       
                                      
          @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
