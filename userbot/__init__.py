@@ -485,14 +485,11 @@ with lynx:
                                               custom.Button.url(
                                                   text="Repo",
                                                   url="https://github.com/ythm00/Cyber"
-                                              ],
-                                          )    
-                                          
-                                      
-                                      
+                                            ]
+                                        ),                                                                             
                                       
                                      
-        @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
+         @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
         async def inline_handler(event):
             builder = event.builder
             result = None
