@@ -499,7 +499,6 @@ with bot:
                 result = builder.photo(
                     file=Clogo,
                     link_preview=False,
-                    "Please Use Only With .help Command",
                     text="{}\nTotal loaded modules: {}".format(
                         "Cyber modules helper.\n",
                         len(dugmeler),
