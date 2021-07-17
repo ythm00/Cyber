@@ -488,7 +488,7 @@ with lynx:
                                               )
                                           ]
                                       ]
-                                      )
+                                      ),
                                       
                                      
         @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
