@@ -30,6 +30,7 @@ from pySmartDL import SmartDL
 from requests import get
 from telethon import TelegramClient, version
 
+from telethon.utils import get_display_name
 from telethon import Button
 from dotenv import load_dotenv
 from telethon import version
@@ -452,7 +453,7 @@ with bot:
             if event.message.from_id != uid:
                 u = await event.client.get_entity(event.chat_id)
                 await event.reply(
-                    f"Hai 👋 {ALIVE_NAME} Welcome To **Cyber**",
+                    f"Hai 👋 [{get_display_name(u)}](tg://user?id={u.id}) Welcome To **Cyber**",
                     buttons=[
                         [
                             Button.url("Support Group",
@@ -476,7 +477,7 @@ with bot:
                 u = await event.client.get_entity(event.chat_id)
                 await event.message.get_sender()
                 text = (
-                    f"Haii {ALIVE_NAME} My Name is **Cyber**\n"
+                    f"Haii [{get_display_name(u)}](tg://user?id={u.id}) My Name is **Cyber**\n"
                     f"and For Maintaining Your Group.\n"
                     f"I was **Created by :** @SyndicateTwenty4 For Various Userbots on Github.\n")
                 await tgbot.send_file(event.chat_id, file=cyberlogo,
