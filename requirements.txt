@@ -54,7 +54,7 @@ scipy
 speedtest-cli
 sqlalchemy<=1.3.23
 telegraph
-telethon
+telethon>=1.14.0
 telethon-session-sqlalchemy
 telethon-tgcrypto
 urbandict
