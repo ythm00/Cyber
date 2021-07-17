@@ -446,7 +446,7 @@ with lynx:
 
 # ======================================== Inline Handler ======================================== #
 
-        @tgbot.on(events.NewMessage(pattern=r"/start"))
+        @tgbot.on(events.NewMessage(pattern="/start"))
         async def handler(event):
             if event.message.from_id != uid:
                 u = await event.client.get_entity(event.chat_id)
@@ -459,7 +459,7 @@ with lynx:
                     ]
                 )
 
-        @tgbot.on(events.NewMessage(pattern=r"/deploy"))
+        @tgbot.on(events.NewMessage(pattern="/deploy"))
         async def handler(event):
             if event.message.from_id != uid:
                 await event.reply(
@@ -469,7 +469,7 @@ with lynx:
                     ],
                 )
 
-        @tgbot.on(events.NewMessage(pattern=r"/repo"))
+        @tgbot.on(events.NewMessage(pattern="/repo"))
         async def handler(event):
             if event.message.from_id != uid:
                 u = await event.client.get_entity(event.chat_id)
@@ -491,7 +491,7 @@ with lynx:
                                       )
                                       
                                       
-       @tgbot.on(events.NewMessage(pattern=r"/ping"))
+       @tgbot.on(events.NewMessage(pattern="/ping"))
         async def handler(event):
             if event.message.from_id != uid:
                 start = datetime.now()
