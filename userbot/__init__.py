@@ -406,26 +406,26 @@ def paginate_help(page_number, loaded_modules, prefix):
                     ">", data="{}_next({})".format(prefix, modulo_page)
                 )
             )
-        ]
+        ] 
     return pairs
 
-# _____________Reg_____________
+# ___________________Reg________________ #
 
-
-with bot:
+with lynx:
     try:
-        bot.tgbot = tgbot = TelegramClient(
+        lynx.tgbot = tgbot = TelegramClient(
             "TG_BOT_TOKEN",
             api_id=API_KEY,
             api_hash=API_HASH).start(
             bot_token=BOT_TOKEN)
 
-# ________Flex_________
+# ______________Flex____________________ #
         dugmeler = CMD_HELP
         me = bot.get_me()
         uid = me.id
 
-# _____Replc____
+
+# _____________Replc______________ #
 
         plugins = CMD_HELP
 
@@ -445,18 +445,6 @@ with bot:
             clogo = "https://telegra.ph/file/b05a86dc5adafcd3de0cc.gif"
 
 # ======================================== Inline Handler ======================================== #
-
-with bot:
-    try:
-        tgbot = TelegramClient(
-            "TG_BOT_TOKEN",
-            api_id=API_KEY,
-            api_hash=API_HASH).start(
-            bot_token=BOT_TOKEN)
-
-        dugmeler = CMD_HELP
-        me = bot.get_me()
-        uid = me.id
 
         @tgbot.on(events.NewMessage(pattern=r"/start"))
         async def handler(event):
