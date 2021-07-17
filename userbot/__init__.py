@@ -133,23 +133,23 @@ ALIVE_LOGO = (
 
 # Inline Picture
 INLINE_PICTURE = os.environ.get(
-    "INLINE_PICTURE") or "resource/Cyber-Button.gif"
+    "INLINE_PICTURE") or "resource/Cyber-Button.jpg"
 
 L_PIC = str(INLINE_PICTURE)
 if L_PIC:
     cyberlogo = L_PIC
 else:
-    cyberlogo = "resource/Cyber-Button.gif"
+    cyberlogo = "resource/Cyber-Button.jpg"
 
 
 INLINE_LOGO = os.environ.get(
-    "INLINE_LOGO") or "https://telegra.ph/file/b05a86dc5adafcd3de0cc.gif"
+    "INLINE_LOGO") or "https://telegra.ph/file/eff0e10179055c4af7cac.jpg"
 
 IN_PIC = str(INLINE_LOGO)
 if IN_PIC:
     cyberlogo = IN_PIC
 else:
-    cyberlogo = "https://telegra.ph/file/b05a86dc5adafcd3de0cc.gif"
+    cyberlogo = "https://telegra.ph/file/eff0e10179055c4af7cac.jpg"
 
 # remove.bg API key
 REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
@@ -436,14 +436,14 @@ with bot:
         if L_PIC:
             cyber_logo = L_PIC
         else:
-            cyberlogo = "resource/Cyber-Button.gif"
+            cyberlogo = "resource/Cyber-Button.jpg"
 
 
         IN_PIC = str(INLINE_LOGO)
         if IN_PIC:
             cyberlogo = IN_PIC
         else:
-            cyberlogo = "https://telegra.ph/file/b05a86dc5adafcd3de0cc.gif"
+            cyberlogo = "https://telegra.ph/file/eff0e10179055c4af7cac.jpg"
 
 # ======================================== Inline Handler ======================================== #
 
