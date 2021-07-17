@@ -130,6 +130,26 @@ ALIVE_LOGO = (
     os.environ.get("ALIVE_LOGO") or "https://telegra.ph/file/7c2398e55b23097f36e41.mp4"
 )
 
+# Inline Picture
+INLINE_PICTURE = os.environ.get(
+    "INLINE_PICTURE") or "resource/logo/Cyber-Button.gift"
+
+L_PIC = str(INLINE_PICTURE)
+if L_PIC:
+    cyberlogo = L_PIC
+else:
+    cyberlogo = "resource/logo/Cyber-Button.gitf"
+
+
+INLINE_LOGO = os.environ.get(
+    "INLINE_LOGO") or "https://telegra.ph/file/b05a86dc5adafcd3de0cc.gif"
+
+IN_PIC = str(INLINE_LOGO)
+if IN_PIC:
+    cyberlogo = IN_PIC
+else:
+    cyberlogo = "https://telegra.ph/file/b05a86dc5adafcd3de0cc.gif"
+
 # remove.bg API key
 REM_BG_API_KEY = os.environ.get("REM_BG_API_KEY", None)
 
@@ -380,15 +400,51 @@ def paginate_help(page_number, loaded_modules, prefix):
         ] + [
             (
                 custom.Button.inline(
-                    "<", data="{}_prev({})".format(prefix, modulo_page)
+                    "<", data="{}_prev({})".format(prefix, modulo_page)           
                 ),
                 custom.Button.inline(
                     ">", data="{}_next({})".format(prefix, modulo_page)
-                ),
+                )
             )
         ]
     return pairs
 
+# _____________Reg_____________
+
+
+with bot:
+    try:
+        bot.tgbot = tgbot = TelegramClient(
+            "TG_BOT_TOKEN",
+            api_id=API_KEY,
+            api_hash=API_HASH).start(
+            bot_token=BOT_TOKEN)
+
+# ________Flex_________
+        dugmeler = CMD_HELP
+        me = bot.get_me()
+        uid = me.id
+
+# _____Replc____
+
+        plugins = CMD_HELP
+
+# _______________ InlinePic _____________ #
+
+        C_PIC = str(INLINE_PICTURE)
+        if L_PIC:
+            C_logo = L_PIC
+        else:
+            cyberlogo = "resource/logo/cyber-LogoButton.gitf"
+
+
+        IN_PIC = str(INLINE_LOGO)
+        if IN_PIC:
+            clogo = IN_PIC
+        else:
+            clogo = "https://telegra.ph/file/b05a86dc5adafcd3de0cc.gif"
+
+# ======================================== Inline Handler ======================================== #
 
 with bot:
     try:
@@ -402,12 +458,61 @@ with bot:
         me = bot.get_me()
         uid = me.id
 
-        @tgbot.on(events.NewMessage(pattern="/start"))
+        @tgbot.on(events.NewMessage(pattern=r"/start"))
         async def handler(event):
             if event.message.from_id != uid:
-                await event.reply("I'm [Cyber](https://github.com/ythm00/Cyber) modules helper...\nplease make your own bot, don't use mine 😋")
-            else:
-                await event.reply(f"`Hey there {ALIVE_NAME}\n\nI work for you :)`")
+                u = await event.client.get_entity(event.chat_id)
+                await event.reply(
+                    f"Hai 👋 [{get_display_name(u)}](tg://user?id={u.id}) Welcome To **Cyber**",
+                    buttons=[
+                        [
+                            Button.url("Support Group",
+                                       "https://t.me/RythmSupportGroup")],
+                    ]
+                )
+
+        @tgbot.on(events.NewMessage(pattern=r"/deploy"))
+        async def handler(event):
+            if event.message.from_id != uid:
+                await event.reply(
+                    f"**Cyber** Deploy to Heroku, Click Here ",
+                    buttons=[
+                        [Button.url("Deploy", "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2Fythm00%2FCyber&template=https%3A%2F%2Fgithub.com%2Fythm00%2FCyber%2Ftree%2Fmaster")],
+                    ],
+                )
+
+        @tgbot.on(events.NewMessage(pattern=r"/repo"))
+        async def handler(event):
+            if event.message.from_id != uid:
+                u = await event.client.get_entity(event.chat_id)
+                await event.message.get_sender()
+                text = (
+                    f"Haii [{get_display_name(u)}](tg://user?id={u.id}) My Name is **Cyber**\n"
+                    f"and For Maintaining Your Group.\n"
+                    f"I was **Created by :** @SyndicateTwenty4 For Various Userbots on Github.\n")
+                await lynx.tgbot.send_file(event.chat_id, file=lynxlogo,
+                                      caption=text,
+                                      buttons=[
+                                          [
+                                              custom.Button.url(
+                                                  text="Repo",
+                                                  url="https://github.com/ythm00/Cyber"
+                                              )
+                                          ]
+                                      ]
+                                      )
+                                      
+                                      
+       @tgbot.on(events.NewMessage(pattern=r"/ping"))
+        async def handler(event):
+            if event.message.from_id != uid:
+                start = datetime.now()
+                end = datetime.now()
+                ms = (end - start).microseconds / 1000
+                await lynx.tgbot.send_message(
+                    event.chat_id,
+                    f"**PONG !!**\n `{ms}ms`",
+                )                           
 
         @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
         async def inline_handler(event):
@@ -416,14 +521,16 @@ with bot:
             query = event.text
             if event.query.user_id == uid and query.startswith("@UserButt"):
                 buttons = paginate_help(0, dugmeler, "helpme")
-                result = builder.article(
+                result = builder.foto(
+                file=Clogo,
+                link_preview=False,
                     "Please Use Only With .help Command",
                     text="{}\nTotal loaded modules: {}".format(
                         "Cyber modules helper.\n",
                         len(dugmeler),
                     ),
                     buttons=buttons,
-                    link_preview=False,
+                    
                 )
             elif query.startswith("tb_btn"):
                 result = builder.article(
