@@ -485,7 +485,7 @@ with lynx:
                                               custom.Button.url(
                                                   text="Repo",
                                                   url="https://github.com/ythm00/Cyber)]",
-                                            ]
+                                          ]
                                         )
                                       
                                      
