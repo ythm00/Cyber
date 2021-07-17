@@ -30,6 +30,7 @@ from pySmartDL import SmartDL
 from requests import get
 from telethon import TelegramClient, version
 
+from telethon import Button
 from dotenv import load_dotenv
 from telethon import version
 from telethon.sync import TelegramClient, custom, events
