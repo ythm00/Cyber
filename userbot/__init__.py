@@ -496,7 +496,7 @@ with bot:
             query = event.text
             if event.query.user_id == uid and query.startswith("@UserButt"):
                 buttons = paginate_help(0, dugmeler, "helpme")
-                result = builder.foto(
+                result = builder.photo(
                 file=Clogo,
                 link_preview=False,
                     "Please Use Only With .help Command",
