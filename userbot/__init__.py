@@ -411,9 +411,9 @@ def paginate_help(page_number, loaded_modules, prefix):
 
 # ___________________Reg________________ #
 
-with lynx:
+with bot:
     try:
-        lynx.tgbot = tgbot = TelegramClient(
+        tgbot = tgbot = TelegramClient(
             "TG_BOT_TOKEN",
             api_id=API_KEY,
             api_hash=API_HASH).start(
@@ -489,7 +489,7 @@ with lynx:
                                         )
                                       
                                      
-         @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
+        @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
         async def inline_handler(event):
             builder = event.builder
             result = None
