@@ -505,7 +505,7 @@ with bot:
                         len(dugmeler),
                     ),
                     buttons=buttons,
-                    ) 
+                ) 
             elif query.startswith("tb_btn"):
                 result = builder.article(
                     "Cyber Helper",
