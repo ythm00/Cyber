@@ -432,18 +432,18 @@ with bot:
 
 # _______________ InlinePic _____________ #
 
-        C_PIC = str(INLINE_PICTURE)
+        cyber_PIC = str(INLINE_PICTURE)
         if L_PIC:
-            C_logo = L_PIC
+            cyber_logo = L_PIC
         else:
             cyberlogo = "resource/logo/cyber-LogoButton.gitf"
 
 
         IN_PIC = str(INLINE_LOGO)
         if IN_PIC:
-            clogo = IN_PIC
+            cyberlogo = IN_PIC
         else:
-            clogo = "https://telegra.ph/file/b05a86dc5adafcd3de0cc.gif"
+            cyberlogo = "https://telegra.ph/file/b05a86dc5adafcd3de0cc.gif"
 
 # ======================================== Inline Handler ======================================== #
 
@@ -498,7 +498,7 @@ with bot:
             if event.query.user_id == uid and query.startswith("@UserButt"):
                 buttons = paginate_help(0, dugmeler, "helpme")
                 result = builder.photo(
-                    file=Clogo,
+                    file=cyberlogo,
                     link_preview=False,
                     text="{}\nTotal loaded modules: {}".format(
                         "Cyber modules helper.\n",
