@@ -133,13 +133,13 @@ ALIVE_LOGO = (
 
 # Inline Picture
 INLINE_PICTURE = os.environ.get(
-    "INLINE_PICTURE") or "resource/logo/Cyber-Button.gift"
+    "INLINE_PICTURE") or "resource/Cyber-Button.gif"
 
 L_PIC = str(INLINE_PICTURE)
 if L_PIC:
     cyberlogo = L_PIC
 else:
-    cyberlogo = "resource/logo/Cyber-Button.gitf"
+    cyberlogo = "resource/Cyber-Button.gif"
 
 
 INLINE_LOGO = os.environ.get(
@@ -436,7 +436,7 @@ with bot:
         if L_PIC:
             cyber_logo = L_PIC
         else:
-            cyberlogo = "resource/logo/cyber-LogoButton.gitf"
+            cyberlogo = "resource/Cyber-Button.gif"
 
 
         IN_PIC = str(INLINE_LOGO)
