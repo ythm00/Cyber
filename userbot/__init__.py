@@ -503,7 +503,7 @@ with bot:
                     f"                           \n"
                     f"**__Python__**: `{python_version()}`\n"
                     f"**__Telethon__**: `{version.__version__}`\n"
-            await tgbot.send_file(event.chat_id, file=lynxlogo,
+            await tgbot.send_file(event.chat_id, file=cyberlogo,
                                        caption=text,
                                        buttons=[
                                            [
