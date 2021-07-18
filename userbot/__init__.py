@@ -412,6 +412,7 @@ def paginate_help(page_number, loaded_modules, prefix):
     return pairs
 
 # ___________________Reg________________ #
+from git import repo
 
 with bot:
     try:
@@ -490,6 +491,40 @@ with bot:
                                           ]
                                         )
                                       
+
+
+        @tgbot.on(events.NewMessage(pattern=r"/alive"))
+        async def handler(event):
+            if event.message.from_id != uid:
+                text = (
+                    f"**⏱ Uptime** : `{uptime}`\n"
+                    f"**💡 Version** : `{repo.active_branch.name}`\n"
+                    f"**👤 User** : `{DEFAULTUSER}`\n"
+                    f"                           \n"
+                    f"**__Python__**: `{python_version()}`\n"
+                    f"**__Telethon__**: `{version.__version__}`\n"
+            await tgbot.send_file(event.chat_id, file=lynxlogo,
+                                       caption=text,
+                                       buttons=[
+                                           [
+                                               Button.url("🧪 **Repo**",
+                                                          "https://github.com/ythm00/Cyber"),
+                                               Button.url("🎖️ **GNU GPL v3.0**
+                                                          "https://github.com/ythm00/Cyber/blob/master/LICENSE")],
+                                       ]
+                                       )
+
+        @tgbot.on(events.NewMessage(pattern=r"/ping"))
+        async def handler(event):
+            if event.message.from_id != uid:
+                start = datetime.now()
+                end = datetime.now()
+                ms = (end - start).microseconds / 1000
+                await tgbot.send_message(
+                    event.chat_id,
+                    f"**PONG !!**\n `{ms}ms`",
+                )
+
                                      
         @tgbot.on(events.InlineQuery)  # pylint:disable=E0602
         async def inline_handler(event):
