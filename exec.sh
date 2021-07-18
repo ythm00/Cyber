@@ -28,7 +28,7 @@ elif [ ${1} == "-h" ] || [ ${1} == "--help" ] ; then
 	echo -e "--daemonize    || -d -- Run in the background, logs will be saved in *-cyber.log"
 	exit 0
 else
-	echo -e  "WeebProject"
+	echo -e  "Cyber"
         echo -e  "Licensed under Raphielscape Public License"
         echo -e  "\nUsage:"
         echo -e  "[no arguments] || -x -- Run in the foreground, stdout is the logcat"
