@@ -499,7 +499,7 @@ with bot:
             if event.message.from_id != uid:
                 text = (
                     f"**💡 Version** : `master`\n"
-                    f"**👤 User** : `{DEFAULTUSER}`\n"
+                    f"**👤 User** : `{ALIVE_NAME}`\n"
                     f"                           \n"
                     f"**__Python__**: `{python_version()}`\n"
                     f"**__Telethon__**: `{version.__version__}`\n")
