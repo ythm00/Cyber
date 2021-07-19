@@ -553,7 +553,7 @@ with bot:
                     "Cyber Helper",
                     text="List of Modules",
                     buttons=[],
-                    link_preview=False,
+                    link_preview=False)
             else:
                 result = builder.article(
                     "Cyber",
