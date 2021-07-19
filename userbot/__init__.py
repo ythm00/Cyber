@@ -386,6 +386,8 @@ AFKREASON = None
 def paginate_help(page_number, loaded_modules, prefix):
     number_of_rows = 5
     number_of_cols = 2
+    global unpage
+    unpage = page_number
     helpable_modules = [p for p in loaded_modules if not p.startswith("_")]
     helpable_modules = sorted(helpable_modules)
     modules = [
@@ -404,6 +406,9 @@ def paginate_help(page_number, loaded_modules, prefix):
             (
                 custom.Button.inline(
                     "<", data="{}_prev({})".format(prefix, modulo_page)           
+                ),
+                custom.Button.inline(
+                    "Back", data="{}_back({})".format(prefix, modulo_page)
                 ),
                 custom.Button.inline(
                     ">", data="{}_next({})".format(prefix, modulo_page)
@@ -489,8 +494,8 @@ with bot:
                                               custom.Button.url(
                                                   text="Repo",
                                                   url="https://github.com/ythm00/Cyber")],
-                                          ]
-                                        )
+                                      ]
+                                      )
                                       
 
 
@@ -532,14 +537,13 @@ with bot:
             result = None
             query = event.text
             if event.query.user_id == uid and query.startswith("@UserButt"):
-                buttons = paginate_help(0, dugmeler, "helpme")
-                result = builder.photo(
-                    file=cyberlogo,
+                buttons = [
+                    (Button.inline("Open Main Menu", data="mainmenu"),),
+                ]
+                result = builder.article(
+                    "Cyber Main Menu",
+                    text="© Cyber",
                     link_preview=False,
-                    text="{}\nTotal loaded modules: {}".format(
-                        "Cyber modules helper.\n",
-                        len(dugmeler),
-                    ),
                     buttons=buttons,
                 )
             elif query.startswith("tb_btn"):
@@ -565,6 +569,43 @@ with bot:
                 )
             await event.answer([result] if result else None)
 
+
+        @tgbot.on(
+            events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+                data=re.compile(rb"mainmenu")
+            )
+        )
+        async def on_plug_in_callback_query_handler(event):
+            if event.query.user_id == uid:
+                buttons = paginate_help(0, dugmeler, "helpme")
+                text = f"Cyber modules helper.\n\nTotal loaded modules: {len(plugins)}"
+                await event.edit(text,
+                    file=cyberlogo
+                    buttons=buttons,
+                    link_preview=False,
+                )
+            else:
+                reply_pop_up_alert = "Please make for yourself, don't use my bot!"
+                await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+
+        @tgbot.on(
+            events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+                data=re.compile(rb"opener")
+            )
+        )
+        async def on_plug_in_callback_query_handler(event):
+            if event.query.user_id == uid:
+                current_page_number = int(unpage)
+                buttons = paginate_help(current_page_number, plugins, "helpme")
+                text = f"Cyber modules helper.\n\nTotal loaded modules: {len(plugins)}"
+                await event.edit(text,
+                    buttons=buttons,
+                    link_preview=False,
+                )
+            else:
+                reply_pop_up_alert = "Please make for yourself, don't use my bot!"
+                await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+
         @tgbot.on(
             events.callbackquery.CallbackQuery(  # pylint:disable=E0602
                 data=re.compile(rb"helpme_next\((.+?)\)")
@@ -578,6 +619,24 @@ with bot:
                     current_page_number + 1, dugmeler, "helpme")
                 # https://t.me/TelethonChat/115200
                 await event.edit(buttons=buttons)
+            else:
+                reply_pop_up_alert = "Please make for yourself, don't use my bot!"
+                await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
+
+        @tgbot.on(
+            events.callbackquery.CallbackQuery(  # pylint:disable=E0602
+                data=re.compile(rb"helpme_back\((.+?)\)")
+            )
+        )
+        async def on_plug_in_callback_query_handler(event):
+            if event.query.user_id == uid:  # Lynx-Openeer
+                # https://t.me/TelethonChat/115200
+                await event.edit(
+                    link_preview=True,
+                    buttons=[
+                        [custom.Button.inline("Open Menu Again", data="opener")],
+                    ]
+                )
             else:
                 reply_pop_up_alert = "Please make for yourself, don't use my bot!"
                 await event.answer(reply_pop_up_alert, cache_time=0, alert=True)
