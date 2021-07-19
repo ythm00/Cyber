@@ -32,7 +32,7 @@ from requests import get
 from telethon import TelegramClient, version
 
 from telethon.utils import get_display_name
-from telethon import Button
+from telethon import Button, functions, types
 from dotenv import load_dotenv
 from telethon import version
 from telethon.sync import TelegramClient, custom, events
@@ -580,9 +580,9 @@ with bot:
                 buttons = paginate_help(0, dugmeler, "helpme")
                 text = f"Cyber modules helper.\n\nTotal loaded modules: {len(plugins)}"
                 await event.edit(text,
-                    file=cyberlogo
+                    file=cyberlogo,
                     buttons=buttons,
-                    link_preview=True),
+                    link_preview=False,
                 )
             else:
                 reply_pop_up_alert = "Please make for yourself, don't use my bot!"
