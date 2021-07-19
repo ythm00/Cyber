@@ -507,9 +507,9 @@ with bot:
                                        caption=text,
                                        buttons=[
                                            [
-                                               Button.url("🧪 Repo",
+                                               Button.url("🧪 **Repo**",
                                                           "https://github.com/ythm00/Cyber"),
-                                               Button.url("🎖️ GNU GPL v3.0
+                                               Button.url("🎖️ **GNU GPL v3.0**",
                                                           "https://github.com/ythm00/Cyber/blob/master/LICENSE")],
                                        ]
                                        )
