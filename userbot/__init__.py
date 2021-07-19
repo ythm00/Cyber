@@ -599,6 +599,7 @@ with bot:
                 buttons = paginate_help(current_page_number, plugins, "helpme")
                 text = f"Cyber modules helper.\n\nTotal loaded modules: {len(plugins)}"
                 await event.edit(text,
+                    file=cyberlogo
                     buttons=buttons,
                     link_preview=False,
                 )
