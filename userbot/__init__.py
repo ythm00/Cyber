@@ -16,7 +16,6 @@ from logging import DEBUG, INFO, basicConfig, getLogger
 from platform import python_version
 from sys import version_info
 from time import sleep
-from time import time
 import re
 
 from pathlib import Path
@@ -499,7 +498,6 @@ with bot:
         async def handler(event):
             if event.message.from_id != uid:
                 text = (
-                    f"**⏱ Uptime** : `{uptime}`\n"
                     f"**💡 Version** : `{repo.active_branch.name}`\n"
                     f"**👤 User** : `{DEFAULTUSER}`\n"
                     f"                           \n"
