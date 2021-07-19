@@ -581,8 +581,8 @@ with bot:
                 text = f"Cyber modules helper.\n\nTotal loaded modules: {len(plugins)}"
                 await event.edit(text,
                     file=cyberlogo
-                    buttons=buttons,
                     link_preview=False,
+                    buttons=buttons,
                 )
             else:
                 reply_pop_up_alert = "Please make for yourself, don't use my bot!"
