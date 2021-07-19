@@ -16,7 +16,7 @@ from logging import DEBUG, INFO, basicConfig, getLogger
 from platform import python_version
 from sys import version_info
 from time import sleep
-from time import uptime
+from time import time
 import re
 
 from pathlib import Path
