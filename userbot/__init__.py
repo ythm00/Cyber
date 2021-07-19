@@ -498,7 +498,7 @@ with bot:
         async def handler(event):
             if event.message.from_id != uid:
                 text = (
-                    f"**💡 Version** : `{repo.active_branch.name}`\n"
+                    f"**💡 Version** : `master`\n"
                     f"**👤 User** : `{DEFAULTUSER}`\n"
                     f"                           \n"
                     f"**__Python__**: `{python_version()}`\n"
