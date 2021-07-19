@@ -2,13 +2,16 @@
 
 FROM irhamfadzillah/cyber:buster
 
-RUN git clone -b master https://github.com/ythm00/Cyber /root/userbot
-RUN mkdir /root/userbot/.bin
-WORKDIR /root/userbot
+# Clone repo and prepare working directory
+RUN git clone -b master https://github.com/ythm00/Cyber /home/cyber/ \
+    && chmod 777 /home/cyber \
+    && mkdir /home/cyber/bin/
 
-#RUN pip install --upgrade pip setuptools
+# Copies config.env (if exists)
+COPY ./sample_config.env ./config.env* /home/cyber/
 
-#Install python requirements
-#RUN pip3 install -r https://raw.githubusercontent.com/ythm00/Cyber/Cyber/requirements.txt
+# Setup Working Directory
+WORKDIR /home/cyber/
 
+# Finalization
 CMD ["python3","-m","userbot"]
