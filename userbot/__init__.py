@@ -581,7 +581,7 @@ with bot:
                 text = f"Cyber modules helper.\n\nTotal loaded modules: {len(plugins)}"
                 await event.edit(text,
                     file=cyberlogo
-                    buttons=buttons,
+                    buttons=Buttons,
                     link_preview=False,
                 )
             else:
