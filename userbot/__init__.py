@@ -540,6 +540,8 @@ with bot:
                 buttons = [
                     (Button.inline("Open Main Menu", data="mainmenu"),),
                 ]
+                photo_bytesio = cyberlogo
+                result = builder.photo(photo_bytesio,
                 result = builder.article(
                     "Cyber Main Menu",
                     text="© Cyber",
@@ -565,7 +567,7 @@ with bot:
                                 "Support",
                                 "https://t.me/RythmSupportGroup")],
                     ],
-                    link_preview=False,
+                    link_preview=True),
                 )
             await event.answer([result] if result else None)
 
