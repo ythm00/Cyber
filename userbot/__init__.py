@@ -540,7 +540,7 @@ with bot:
                 buttons = [
                     (Button.inline("Open Main Menu", data="mainmenu"),),
                 ]
-                photo_bytesio = cyberlogo
+                photo_bytesio = cyberlogo,
                 result = builder.photo(photo_bytesio,
                 result = builder.article(
                     "Cyber Main Menu",
