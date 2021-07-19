@@ -582,7 +582,7 @@ with bot:
                 await event.edit(text,
                     file=cyberlogo
                     buttons=buttons,
-                    link_preview=False,
+                    link_preview=True)
                 )
             else:
                 reply_pop_up_alert = "Please make for yourself, don't use my bot!"
