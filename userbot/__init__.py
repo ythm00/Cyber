@@ -566,7 +566,7 @@ with bot:
                                 "Support",
                                 "https://t.me/RythmSupportGroup")],
                     ],
-                    link_preview=True),
+                    link_preview=True,
                 )
             await event.answer([result] if result else None)
 
