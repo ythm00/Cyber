@@ -541,7 +541,7 @@ with bot:
                     (Button.inline("Open Main Menu", data="mainmenu"),),
                 ]
                 photo_bytesio = cyberlogo
-                result = builder.photo(photo_bytesio,
+                result = builder.photo,
                     "Cyber Main Menu",
                     text="© Cyber",
                     link_preview=False,
