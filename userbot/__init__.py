@@ -542,7 +542,6 @@ with bot:
                 ]
                 photo_bytesio = cyberlogo
                 result = builder.photo(photo_bytesio,
-                    "Cyber Main Menu",
                     text="© Cyber",
                     link_preview=False,
                     buttons=buttons,
