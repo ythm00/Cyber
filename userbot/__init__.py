@@ -37,7 +37,6 @@ from dotenv import load_dotenv
 from telethon import version
 from telethon.sync import TelegramClient, custom, events
 from telethon.sessions import StringSession
-from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 
 
 from .storage import Storage
@@ -428,9 +427,6 @@ with bot:
             "TG_BOT_TOKEN",
             api_id=API_KEY,
             api_hash=API_HASH).start(
-            connection=ConnectionTcpAbridged,
-            auto_reconnect=True,
-            connection_retries=None).start(
             bot_token=BOT_TOKEN)
 
 # ______________Flex____________________ #
