@@ -37,6 +37,7 @@ from dotenv import load_dotenv
 from telethon import version
 from telethon.sync import TelegramClient, custom, events
 from telethon.sessions import StringSession
+from telethon.network.connection.tcpabridged import ConnectionTcpAbridged
 
 
 from .storage import Storage
@@ -426,7 +427,10 @@ with bot:
         tgbot = TelegramClient(
             "TG_BOT_TOKEN",
             api_id=API_KEY,
-            api_hash=API_HASH).start(
+            api_hash=API_HASH,
+            connection=ConnectionTcpAbridged,
+            auto_reconnect=True,
+            connection_retries=None).start(
             bot_token=BOT_TOKEN)
 
 # ______________Flex____________________ #
@@ -523,8 +527,8 @@ with bot:
         @tgbot.on(events.ChatAction)
         async def handler(event):
             if event.user_joined:
-                u = await event.client.get_entity(event.chat_id)
-                c = await event.client.get_entity(event.user_id)
+                c = await event.client.get_entity(event.chat_id)
+                u = await event.client.get_entity(event.user_id)
                await event.reply(f"`Welcome to the` [{get_display_name(u)}](tg://user?id={u.id})\n👤**User:** [{get_display_name(c)}](tg://user?id={c.id})")
 
 
