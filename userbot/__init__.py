@@ -463,9 +463,9 @@ with bot:
         @tgbot.on(events.NewMessage(pattern="/start"))
         async def handler(event):
             if event.message.from_id != uid:
-                u = await event.client.get_entity(event.chat_id)
+                c = await event.client.get_entity(event.user_id)
                 await event.reply(
-                    f"Hai 👋 [{get_display_name(u)}](tg://user?id={u.id}) Welcome To **Cyber**",
+                    f"Hai 👋 [{get_display_name(c)}](tg://user?id={c.id}) Welcome To **Cyber**",
                     buttons=[
                         [
                             Button.url("Support Group",
