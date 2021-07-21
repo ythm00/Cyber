@@ -426,6 +426,9 @@ with bot:
             "TG_BOT_TOKEN",
             api_id=API_KEY,
             api_hash=API_HASH).start(
+            connection=ConnectionTcpAbridged,
+            auto_reconnect=True,
+            connection_retries=None).start(
             bot_token=BOT_TOKEN)
 
 # ______________Flex____________________ #
@@ -518,6 +521,14 @@ with bot:
                                                           "https://github.com/ythm00/Cyber/blob/master/LICENSE")],
                                        ]
                                        )
+
+        @tgbot.on(events.ChatAction)
+        async def handler(event):
+            if event.user_joined:
+                u = await event.client.get_entity(event.chat_id)
+                c = await event.client.get_entity(event.user_id)
+                await event.reply(f"```Welcome to the``` [{get_display_name(u)}](tg://user?id={u.id})\n👤**User:** [{get_display_name(c)}](tg://user?id={c.id})")
+
 
         @tgbot.on(events.NewMessage(pattern=r"/ping"))
         async def handler(event):
