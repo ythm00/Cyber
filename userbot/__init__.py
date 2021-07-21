@@ -480,7 +480,7 @@ with bot:
                     f"**Cyber** Deploy to Heroku, Click Here ",
                     buttons=[
                         [Button.url("Deploy", "https://dashboard.heroku.com/new?button-url=https%3A%2F%2Fgithub.com%2Fythm00%2FCyber&template=https%3A%2F%2Fgithub.com%2Fythm00%2FCyber%2Ftree%2Fmaster")],
-                    ],
+                    ]
                 )
 
         @tgbot.on(events.NewMessage(pattern="/repo"))
