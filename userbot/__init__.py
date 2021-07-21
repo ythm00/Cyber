@@ -521,8 +521,8 @@ with bot:
                                                      "https://github.com/ythm00/Cyber"),
                                           Button.url("🎖️ GNU GPL v3.0",
                                                      "https://github.com/ythm00/Cyber/blob/master/LICENSE")],
-                                       ]
-                                       )
+                                          ]
+                                 )
 
         @tgbot.on(events.ChatAction)
         async def handler(event):
