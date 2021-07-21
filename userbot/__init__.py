@@ -510,13 +510,13 @@ with bot:
                     f"**__Python__**: `{python_version()}`\n"
                     f"**__Telethon__**: `{version.__version__}`\n")
             await tgbot.send_file(event.chat_id, file=cyberlogo,
-                                       caption=text,
-                                       buttons=[
-                                           [
-                                               Button.url("🧪 Repo",
-                                                          "https://github.com/ythm00/Cyber"),
-                                               Button.url("🎖️ GNU GPL v3.0",
-                                                          "https://github.com/ythm00/Cyber/blob/master/LICENSE")],
+                                  caption=text,
+                                  buttons=[
+                                      [
+                                          Button.url("🧪 Repo",
+                                                     "https://github.com/ythm00/Cyber"),
+                                          Button.url("🎖️ GNU GPL v3.0",
+                                                     "https://github.com/ythm00/Cyber/blob/master/LICENSE")],
                                        ]
                                        )
 
