@@ -1,5 +1,4 @@
 # Copyright © 2021 Cyber
-#
 # Licensed under the Raphielscape Public License, Version 1.d (the "License");
 # you may not use this file except in compliance with the License.
 # Cyber by @StayWithMe69
@@ -7,7 +6,7 @@
 
 
 
-mport asyncio
+import asyncio
 from datetime import datetime
 
 from telethon.errors import BadRequestError
