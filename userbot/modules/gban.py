@@ -11,12 +11,17 @@ from datetime import datetime
 
 from telethon.errors import BadRequestError
 from telethon.tl.functions.channels import EditBannedRequest
-from telethon.tl.types import Channel, ChatBannedRights
+from telethon.tl.functions.messages import ImportChatInviteRequest
+from telethon.tl.types import (
+    Channel,
+    ChatBannedRights,
+    MessageEntityMentionName,
+)
 
 import userbot.modules.sql_helper.gban_sql_helper as gban_sql
 from userbot import BOTLOG, BOTLOG_CHATID
 from userbot.events import register
-from userbot.modules.admin import get_user_from_event
+from userbot.utils import edit_delete, edit_or_reply
 from userbot import CMD_HELP
 
 BANNED_RIGHTS = ChatBannedRights(
@@ -43,11 +48,71 @@ UNBAN_RIGHTS = ChatBannedRights(
 )
 
 
+async def admin_groups(grp):
+    admgroups = []
+    async for dialog in grp.client.iter_dialogs():
+        entity = dialog.entity
+        if (
+            isinstance(entity, Channel)
+            and entity.megagroup
+            and (entity.creator or entity.admin_rights)
+        ):
+            admgroups.append(entity.id)
+    return admgroups
+
+
+def mentionuser(name, userid):
+    return f"[{name}](tg://user?id={userid})"
+
+
+async def get_user_from_event(event, uevent=None, secondgroup=None):
+    if uevent is None:
+        uevent = event
+    if secondgroup:
+        args = event.pattern_match.group(2).split(" ", 1)
+    else:
+        args = event.pattern_match.group(1).split(" ", 1)
+    extra = None
+    if event.reply_to_msg_id:
+        previous_message = await event.get_reply_message()
+        if previous_message.from_id is None and not event.is_private:
+            await edit_delete(uevent, "`Dia Adalah Admin Anonim.`")
+            return None, None
+        user_obj = await event.client.get_entity(previous_message.sender_id)
+        extra = event.pattern_match.group(1)
+    elif args:
+        user = args[0]
+        if len(args) == 2:
+            extra = args[1]
+        if user.isnumeric():
+            user = int(user)
+        if not user:
+            await edit_delete(
+                uevent, "**Please enter ID/Username/Reply message user.**", 5
+            )
+            return None, None
+        if event.message.entities:
+            probable_user_mention_entity = event.message.entities[0]
+            if isinstance(
+                    probable_user_mention_entity,
+                    MessageEntityMentionName):
+                user_id = probable_user_mention_entity.user_id
+                user_obj = await event.client.get_entity(user_id)
+                return user_obj, extra
+        try:
+            user_obj = await event.client.get_entity(user)
+        except (TypeError, ValueError):
+            await edit_delete(
+                uevent, "**Sorry can't retrieve user information.**", 5
+            )
+            return None, None
+    return user_obj, extra
+
 @register(outgoing=True, pattern=r"^\.gban(?: |$)(.*)")
 async def global_ban(event):
     if event.fwd_from:
         return
-    await event.edit("Gbanned....")
+    await edit_or_reply (""𝘎𝘭𝘰𝘣𝘢𝘭 𝘉𝘢𝘯𝘯𝘦𝘥 𝘪𝘯 𝘗𝘳𝘰𝘨𝘳𝘦𝘴𝘴!!")
     start = datetime.now()
     user, reason = await get_user_from_event(event)
     if not user:
@@ -119,7 +184,7 @@ async def global_ban(event):
 async def unglobal_ban(event):
     if event.fwd_from:
         return
-    await event.edit("ungbaning.....")
+    await edit_or_reply("𝘜𝘯𝘎𝘉𝘢𝘯 𝘪𝘯 𝘗𝘳𝘰𝘨𝘳𝘦𝘴𝘴!!")
     start = datetime.now()
     user, reason = await get_user_from_event(event)
     if not user:
