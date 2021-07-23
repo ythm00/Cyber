@@ -120,7 +120,7 @@ async def global_ban(event):
     if user.id == (await event.client.get_me()).id:
         return await event.edit("`Why would you gban yourself?`")
     if user.id in DEVELOPER:
-        await edit("He is mya maker.")
+        await event.edit("He is mya maker.")
         return
     try:
         hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
