@@ -118,7 +118,7 @@ async def global_ban(event):
     if not user:
         return
     if user.id == (await event.client.get_me()).id:
-       await event.edit("`Why would you gban yourself?`")
+        await event.edit("`Why would you gban yourself?`")
         return
     if user.id in DEVELOPER:
         await event.edit("He is mya maker.")
