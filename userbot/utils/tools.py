@@ -149,7 +149,7 @@ async def edit_or_reply(
     for i in asciich:
         text = re.sub(rf"\{i}", "", text)
     if aslink:
-        linktext = linktext or "Pesan terlalu besar jadi ditempel ke nekobin"
+        linktext = linktext or "The message is too big so it's glued to the nekobin"
         try:
             key = (
                 requests.post(
@@ -159,7 +159,7 @@ async def edit_or_reply(
                 .get("result")
                 .get("key")
             )
-            text = linktext + f" [Disini](https://nekobin.com/{key})"
+            text = linktext + f" [here](https://nekobin.com/{key})"
         except Exception:
             text = re.sub(r"•", ">>", text)
             kresult = requests.post(
