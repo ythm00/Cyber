@@ -112,7 +112,7 @@ async def get_user_from_event(event, uevent=None, secondgroup=None):
 async def global_ban(event):
     if event.fwd_from:
         return
-    await edit_or_reply (""𝘎𝘭𝘰𝘣𝘢𝘭 𝘉𝘢𝘯𝘯𝘦𝘥 𝘪𝘯 𝘗𝘳𝘰𝘨𝘳𝘦𝘴𝘴!!")
+    await edit_or_reply ("𝘎𝘭𝘰𝘣𝘢𝘭 𝘉𝘢𝘯𝘯𝘦𝘥 𝘪𝘯 𝘗𝘳𝘰𝘨𝘳𝘦𝘴𝘴!!")
     start = datetime.now()
     user, reason = await get_user_from_event(event)
     if not user:
@@ -184,7 +184,7 @@ async def global_ban(event):
 async def unglobal_ban(event):
     if event.fwd_from:
         return
-    await edit_or_reply("𝘜𝘯𝘎𝘉𝘢𝘯 𝘪𝘯 𝘗𝘳𝘰𝘨𝘳𝘦𝘴𝘴!!")
+    await edit_or_reply("𝘜𝘯𝘎𝘭𝘰𝘣𝘢𝘭 𝘉𝘢𝘯𝘯𝘦𝘥 𝘪𝘯 𝘗𝘳𝘰𝘨𝘳𝘦𝘴𝘴!!")
     start = datetime.now()
     user, reason = await get_user_from_event(event)
     if not user:
@@ -252,10 +252,10 @@ async def gablist(event):
     if len(gbanned_users) > 0:
         for a_user in gbanned_users:
             if a_user.reason:
-                GBANNED_LIST += f"👉 [{a_user.chat_id}](tg://user?id={a_user.chat_id}) for {a_user.reason}\n"
+                GBANNED_LIST += f"👤 [{a_user.chat_id}](tg://user?id={a_user.chat_id}) for {a_user.reason}\n"
             else:
                 GBANNED_LIST += (
-                    f"👉 [{a_user.chat_id}](tg://user?id={a_user.chat_id}) Reason None\n"
+                    f"👤 [{a_user.chat_id}](tg://user?id={a_user.chat_id}) Reason None\n"
                 )
     else:
         GBANNED_LIST = "no Gbanned Users (yet)"
