@@ -19,7 +19,7 @@ from telethon.tl.types import (
 )
 
 import userbot.modules.sql_helper.gban_sql_helper as gban_sql
-from userbot import BOTLOG, BOTLOG_CHATID, DEVELOPER
+from userbot import BOTLOG, BOTLOG_CHATID
 from userbot.events import register
 from userbot.utils import edit_delete, edit_or_reply
 from userbot import CMD_HELP
@@ -119,9 +119,6 @@ async def global_ban(event):
         return
     if user.id == (await event.client.get_me()).id:
         await event.edit("`Why would you gban yourself?`")
-        return
-    if user.id in DEVELOPER:
-        await event.edit("He is mya maker.")
         return
     try:
         hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
