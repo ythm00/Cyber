@@ -24,4 +24,6 @@ from .tools import (
     post_to_telegraph,
     run_cmd,
     time_formatter,
+    edit_or_reply,
+    edit_delete,
 )
