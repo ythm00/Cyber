@@ -119,6 +119,11 @@ async def global_ban(event):
         return
     if user.id == (await event.client.get_me()).id:
         return await event.edit("`Why would you gban yourself?`")
+
+    if user.id in DEVELOPER:
+        await edit("He is mya maker.")
+        return
+
     if gban_sql.is_gbanned(user.id):
         await event.edit(
             f"the [user](tg://user?id={user.id}) is already in gbanned list any way checking again"
