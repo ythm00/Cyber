@@ -19,7 +19,7 @@ from telethon.tl.types import (
 )
 
 import userbot.modules.sql_helper.gban_sql_helper as gban_sql
-from userbot import BOTLOG, BOTLOG_CHATID
+from userbot import BOTLOG, BOTLOG_CHATID, DEVELOPER
 from userbot.events import register
 from userbot.utils import edit_delete, edit_or_reply
 from userbot import CMD_HELP
