@@ -112,7 +112,7 @@ async def get_user_from_event(event, uevent=None, secondgroup=None):
 async def global_ban(event):
     if event.fwd_from:
         return
-    await edit_or_reply("𝘎𝘭𝘰𝘣𝘢𝘭 𝘉𝘢𝘯𝘯𝘦𝘥 𝘪𝘯 𝘗𝘳𝘰𝘨𝘳𝘦𝘴𝘴!!")
+    await edit_or_reply(event, "𝘎𝘭𝘰𝘣𝘢𝘭 𝘉𝘢𝘯𝘯𝘦𝘥 𝘪𝘯 𝘗𝘳𝘰𝘨𝘳𝘦𝘴𝘴!!")
     start = datetime.now()
     user, reason = await get_user_from_event(event)
     if not user:
@@ -189,7 +189,7 @@ async def global_ban(event):
 async def unglobal_ban(event):
     if event.fwd_from:
         return
-    await edit_or_reply("𝘜𝘯𝘎𝘭𝘰𝘣𝘢𝘭 𝘉𝘢𝘯𝘯𝘦𝘥 𝘪𝘯 𝘗𝘳𝘰𝘨𝘳𝘦𝘴𝘴!!")
+    await edit_or_reply(event, "𝘜𝘯𝘎𝘭𝘰𝘣𝘢𝘭 𝘉𝘢𝘯𝘯𝘦𝘥 𝘪𝘯 𝘗𝘳𝘰𝘨𝘳𝘦𝘴𝘴!!")
     start = datetime.now()
     user, reason = await get_user_from_event(event)
     if not user:
