@@ -1,0 +1,4 @@
+MODULES = []
+HELP = {}
+LOADED = {}
+LIST = {}
