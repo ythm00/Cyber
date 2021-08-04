@@ -5,7 +5,7 @@ from telethon.errors.rpcerrorlist import BotResponseTimeoutError as rep
 from ..core import *
 
 
-@register(outgoing=True, pattern=r"^\.help(?: |$)(.*)")
+@register(outgoing=True, pattern=r"^\.helpme")
 async def _help(cyb):
     module = cyb.pattern_match.group(1)
     if module:
