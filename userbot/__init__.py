@@ -6,41 +6,30 @@
 """ Userbot initialization. """
 
 import os
+import re
 import signal
 import sys
 import time
-
 from datetime import datetime
 from distutils.util import strtobool as sb
 from logging import DEBUG, INFO, basicConfig, getLogger
+from pathlib import Path
 from platform import python_version
 from sys import version_info
 from time import sleep
-import re
-
-from pathlib import Path
-from sys import version_info
-from logging import basicConfig, getLogger, INFO, DEBUG
-from distutils.util import strtobool as sb
-from platform import python_version
 
 from dotenv import load_dotenv
 from pylast import LastFMNetwork, md5
 from pySmartDL import SmartDL
 from requests import get
-from telethon import TelegramClient, version
-
-from telethon.utils import get_display_name
-from telethon import functions, types
-from dotenv import load_dotenv
-from telethon import version
-from telethon.sync import TelegramClient, custom, events
+from telethon import TelegramClient, functions, types, version
 from telethon.sessions import StringSession
-
+from telethon.sync import TelegramClient, custom, events
+from telethon.utils import get_display_name
 
 from .storage import Storage
 
-STORAGE = (lambda n: Storage(Path("data") / n))
+STORAGE = lambda n: Storage(Path("data") / n)
 
 load_dotenv("config.env")
 
@@ -345,6 +334,7 @@ try:
 except AttributeError:
     pass
 
+
 async def send_alive_status():
     if BOTLOG_CHATID:
         message = (
@@ -355,7 +345,6 @@ async def send_alive_status():
         )
         await bot.send_message(BOTLOG_CHATID, message)
         return True
-
 
 
 # Global Variables

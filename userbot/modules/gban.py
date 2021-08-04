@@ -5,24 +5,18 @@
 # Ported from Catuserbot
 
 
-
 import asyncio
 from datetime import datetime
 
 from telethon.errors import BadRequestError
 from telethon.tl.functions.channels import EditBannedRequest
 from telethon.tl.functions.messages import ImportChatInviteRequest
-from telethon.tl.types import (
-    Channel,
-    ChatBannedRights,
-    MessageEntityMentionName,
-)
+from telethon.tl.types import Channel, ChatBannedRights, MessageEntityMentionName
 
 import userbot.modules.sql_helper.gban_sql_helper as gban_sql
-from userbot import BOTLOG, BOTLOG_CHATID
+from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP
 from userbot.events import register
 from userbot.utils import edit_delete, edit_or_reply
-from userbot import CMD_HELP
 
 BANNED_RIGHTS = ChatBannedRights(
     until_date=None,
@@ -93,20 +87,17 @@ async def get_user_from_event(event, uevent=None, secondgroup=None):
             return None, None
         if event.message.entities:
             probable_user_mention_entity = event.message.entities[0]
-            if isinstance(
-                    probable_user_mention_entity,
-                    MessageEntityMentionName):
+            if isinstance(probable_user_mention_entity, MessageEntityMentionName):
                 user_id = probable_user_mention_entity.user_id
                 user_obj = await event.client.get_entity(user_id)
                 return user_obj, extra
         try:
             user_obj = await event.client.get_entity(user)
         except (TypeError, ValueError):
-            await edit_delete(
-                uevent, "**Sorry can't retrieve user information.**", 5
-            )
+            await edit_delete(uevent, "**Sorry can't retrieve user information.**", 5)
             return None, None
     return user_obj, extra
+
 
 @register(outgoing=True, pattern=r"^\.gban(?: |$)(.*)")
 async def global_ban(event):
@@ -152,7 +143,9 @@ async def global_ban(event):
     )
     for i in range(len(groups_admin)):
         try:
-            await event.client(EditBannedRequest(groups_admin[i], user.id, BANNED_RIGHTS))
+            await event.client(
+                EditBannedRequest(groups_admin[i], user.id, BANNED_RIGHTS)
+            )
             await asyncio.sleep(0.5)
             count += 1
         except BadRequestError:
@@ -223,7 +216,9 @@ async def unglobal_ban(event):
     )
     for i in range(len(groups_admin)):
         try:
-            await event.client(EditBannedRequest(groups_admin[i], user.id, UNBAN_RIGHTS))
+            await event.client(
+                EditBannedRequest(groups_admin[i], user.id, UNBAN_RIGHTS)
+            )
             await asyncio.sleep(0.5)
             count += 1
         except BadRequestError:
@@ -279,6 +274,7 @@ async def gablist(event):
             await event.delete()
     else:
         await event.edit(GBANNED_LIST)
+
 
 CMD_HELP.update(
     {

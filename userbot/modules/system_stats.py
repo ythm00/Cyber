@@ -6,7 +6,6 @@
 """ Userbot module for getting information about the server. """
 
 import time
-
 from asyncio import create_subprocess_exec as asyncrunapp
 from asyncio.subprocess import PIPE as asyncPIPE
 from os import remove
@@ -17,8 +16,7 @@ from git import Repo
 from telethon import version
 from telethon.errors.rpcerrorlist import MediaEmptyError
 
-from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, bot, StartTime
-
+from userbot import ALIVE_LOGO, ALIVE_NAME, CMD_HELP, StartTime, bot
 from userbot.events import register
 
 # ================= CONSTANT =================
@@ -53,6 +51,7 @@ async def get_readable_time(seconds: int) -> str:
     up_time += ":".join(time_list)
 
     return up_time
+
 
 @register(outgoing=True, pattern="^.sysd$")
 async def sysdetails(sysd):
@@ -172,8 +171,7 @@ async def amireallyalive(alive):
         f"**__Telethon__**: `{version.__version__}`\n"
         f"                           \n"
         f"🎖**[GNU GPL v3.0](https://github.com/ythm00/Cyber/blob/master/LICENSE)** | 👤 **[Cyber](https://github.com/ythm00)** |  🧪 **[Repo](https://github.com/ythm00/Cyber)**"
-        
-)        
+    )
     if ALIVE_LOGO:
         try:
             logo = ALIVE_LOGO

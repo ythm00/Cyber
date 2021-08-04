@@ -12,10 +12,10 @@ from os import environ, execle
 from random import randint
 from time import sleep
 
-from git import Repo
 from userbot import BOTLOG, BOTLOG_CHATID, CMD_HELP, bot
 from userbot.events import register
 from userbot.utils import time_formatter
+
 
 @register(outgoing=True, pattern=r"^\.random")
 async def randomise(items):
@@ -109,15 +109,14 @@ async def repo_is_here(wannasee):
     """For .repo command, just returns the repo URL."""
     await wannasee.edit(
         "**Hey**, __I am using__ 🔥 **Cyber** 🔥\n"
-    "                      \n"
-    "__Durable as a Cyber__\n"
-    "                      \n"
-"• **Cyber version** : `Master`\n"
-"• **license** : [GNU GPL v3.0](https://github.com/ythm00/Cyber/blob/master/LICENSE)\n"
-"• **copyright** : [ythm00](https://github.com/ythm00)\n"
-"• **repo** : [Cyber](https://github.com/ythm00/Cyber)")
-
-
+        "                      \n"
+        "__Durable as a Cyber__\n"
+        "                      \n"
+        "• **Cyber version** : `Master`\n"
+        "• **license** : [GNU GPL v3.0](https://github.com/ythm00/Cyber/blob/master/LICENSE)\n"
+        "• **copyright** : [ythm00](https://github.com/ythm00)\n"
+        "• **repo** : [Cyber](https://github.com/ythm00/Cyber)"
+    )
 
 
 @register(outgoing=True, pattern=r"^\.raw$")
