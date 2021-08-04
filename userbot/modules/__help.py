@@ -3,7 +3,7 @@ from telethon.errors.rpcerrorlist import BotMethodInvalidError
 from telethon.errors.rpcerrorlist import BotResponseTimeoutError as rep
 
 from userbot import CMD_HELP
-from userbot.event import register
+from userbot.events import register
 
 from ..core import *
 from ..utils import edit_or_reply
