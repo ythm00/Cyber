@@ -1,40 +1,76 @@
-# Copyright (C) 2020 TeamDerUntergang.
-#
-# Licensed under the Raphielscape Public License, Version 1.d (the "License");
-# you may not use this file except in compliance with the License.
-#
+from telethon.errors.rpcerrorlist import BotInlineDisabledError as dis
+from telethon.errors.rpcerrorlist import BotMethodInvalidError
+from telethon.errors.rpcerrorlist import BotResponseTimeoutError as rep
 
-# @Qulec tarafından yazılmıştır.
-# Thanks @Spechide.
-
-import logging
-
-from telethon.errors.rpcerrorlist import BotInlineDisabledError
-
-from userbot import BOT_TOKEN, BOT_USERNAME
-from userbot.events import register
-
-logging.basicConfig(
-    format="[%(levelname) 5s/%(asctime)s] %(name)s: %(message)s", level=logging.WARNING
-)
+from ..utils import tools
 
 
-@register(outgoing=True, pattern=r"^\.helpme")
-async def yardim(event):
-    tgbotusername = BOT_USERNAME
-    if tgbotusername and BOT_TOKEN:
+@register(outgoing=True, pattern=r"^\.help(?: |$)(.*)")
+async def _help(cyb):
+    module = cyb.pattern_match.group(1)
+    if module:
         try:
-            results = await event.client.inline_query(tgbotusername, "@UserButt")
-        except BotInlineDisabledError:
-            return await event.edit(
-                "`Bot can't be used in inline mode.\nMake sure to turn on inline mode!`"
-            )
-        await results[0].click(
-            event.chat_id, reply_to=event.reply_to_msg_id, hide_via=True
-        )
-        await event.delete()
+            if module in HELP:
+                output = f"**Modules** - `{module}`\n"
+                for i in HELP[module]:
+                    output += i
+                output += "\n© @TeamCyber"
+                await edit_or_reply(edit_or_reply, output)
+            elif modules in CMD_HELP:
+                kk = f"Modules Name-{modules}\n\n✘ Commands Available -\n\n"
+                kk += str(CMD_HELP[module])
+                await edit_or_reply(cyb, kk)
+            else:
+                try:
+                    x = f"Modules Name-{module}\n\n✘ Commands Available -\n\n"
+                    for d in LIST[module]:
+                        x += HNDLR + d
+                        x += "\n"
+                    x += "\n© @TeamCyber"
+                    await edit_or_reply(cyb, x)
+                except BaseException:
+                    await eod(ult, get_string("help_1").format(plug), time=5)
+        except BaseException:
+            await edit_or_reply(cyb, "Error 🤔 occured.")
     else:
-        return await event.edit(
-            "`The bot doesn't work! Please set the Bot Token and Username correctly.`"
-            "\n`The module has been stopped.`"
-        )
+        tgbot = asst.me.username
+        try:
+            results = await ult.client.inline_query(tgbot, "cyber")
+        except BotMethodInvalidError:
+            z = []
+            for x in LIST.values():
+                for y in x:
+                    z.append(y)
+            cmd = len(z) + 10
+            return await cyb.client.send_message(
+                cyb.chat_id,
+                get_string("inline_4").format(
+                    OWNER_NAME,
+                    len(MODULES) - 5,
+                    cmd,
+                ),
+                buttons=[
+                    [
+                        Button.inline("• Pʟᴜɢɪɴs", data="hrrrr"),
+                    ],
+                    [
+                        Button.inline("Oᴡɴᴇʀ•ᴛᴏᴏʟꜱ", data="ownr"),
+                        Button.inline("Iɴʟɪɴᴇ•Pʟᴜɢɪɴs", data="inlone"),
+                    ],
+                    [
+                        Button.url(
+                            "⚙️Sᴇᴛᴛɪɴɢs⚙️", url=f"https://t.me/{tgbot}?start=set"
+                        ),
+                    ],
+                    [Button.inline("••Cʟᴏꜱᴇ••", data="close")],
+                ],
+            )
+        except rep:
+            return await edit_or_reply(
+                cyb,
+                get_string("help_2").format(HNDLR),
+            )
+        except dis:
+            return await eor(cyb, get_string("help_3"))
+        await results[0].click(cyb.chat_id, reply_to=cyb.reply_to_msg_id, hide_via=True)
+        await cyb.delete()
