@@ -1,8 +1,8 @@
-from ..core import *
-from ..utils import tools
 from telethon.errors.rpcerrorlist import BotInlineDisabledError as dis
 from telethon.errors.rpcerrorlist import BotMethodInvalidError
 from telethon.errors.rpcerrorlist import BotResponseTimeoutError as rep
+
+from ..core import *
 
 
 @register(outgoing=True, pattern=r"^\.help(?: |$)(.*)")
