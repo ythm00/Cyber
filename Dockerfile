@@ -1,6 +1,6 @@
 # Using Python Slim-Buster
 
-FROM irhamfadzillah/cyber:buster
+FROM codex51/codex:buster
 
 # Clone repo and prepare working directory
 RUN git clone -b master https://github.com/ythm00/Cyber /home/cyber/ \
