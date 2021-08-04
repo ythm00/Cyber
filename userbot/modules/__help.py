@@ -2,8 +2,6 @@ from telethon.errors.rpcerrorlist import BotInlineDisabledError as dis
 from telethon.errors.rpcerrorlist import BotMethodInvalidError
 from telethon.errors.rpcerrorlist import BotResponseTimeoutError as rep
 
-from ..utils import tools
-
 
 @register(outgoing=True, pattern=r"^\.help(?: |$)(.*)")
 async def _help(cyb):
