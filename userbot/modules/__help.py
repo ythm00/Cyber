@@ -3,7 +3,7 @@ from telethon.errors.rpcerrorlist import BotMethodInvalidError
 from telethon.errors.rpcerrorlist import BotResponseTimeoutError as rep
 
 from ..core import *
-
+from ..utils import tools, edit_or_reply
 
 @register(outgoing=True, pattern=r"^\.helpme")
 async def _help(cyb):
