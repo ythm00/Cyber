@@ -3,9 +3,8 @@ from telethon.errors.rpcerrorlist import BotMethodInvalidError
 from telethon.errors.rpcerrorlist import BotResponseTimeoutError as rep
 
 from userbot import CMD_HELP
-from userbot.events import register
-
 from userbot.core import HELP, LIST
+from userbot.events import register
 from userbot.utils import edit_delete, edit_or_reply
 
 
