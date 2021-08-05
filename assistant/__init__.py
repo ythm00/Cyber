@@ -1,4 +1,5 @@
 from telethon import Button, custom
+from userbot import ALIVE_NAME
 
 OWNER_NAME = ALIVE_NAME
 OWNER_ID = "950149480"
