@@ -6,8 +6,7 @@ from userbot import CMD_HELP
 from userbot.events import register
 
 from ..core import *
-from ..utils import edit_delete
-from ..utils import edit_or_reply
+from ..utils import edit_delete, edit_or_reply
 from . import *
 
 
