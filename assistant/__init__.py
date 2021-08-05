@@ -1,7 +1,7 @@
 from telethon import Button, custom
 
-OWNER_NAME = user.first_name
-OWNER_ID = user.id
+OWNER_NAME = ALIVE_NAME
+OWNER_ID = "950149480"
 
 
 async def setit(event, name, value):
