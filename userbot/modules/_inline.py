@@ -12,9 +12,9 @@ from math import ceil
 from os import remove
 
 from git import Repo
-from ..core import *
 from telethon.tl.types import InputBotInlineResult, InputWebDocument
 
+from ..core import *
 from . import *
 
 # ================================================#
@@ -51,7 +51,6 @@ _main_help_menu = [
 SUP_BUTTONS = [
     [
         Button.url("Repo", url="https://github.com/ythm00/Cyber"),
-       
     ],
     [Button.url("Support", url="t.me/CodexSupportGroup")],
 ]
@@ -264,8 +263,6 @@ async def backr(event):
     )
 
 
-
-
 @callback("open")
 @owner
 async def opner(event):
@@ -301,7 +298,7 @@ async def on_plug_in_callback_query_handler(event):
 )
 @owner
 async def on_plug_in_callback_query_handler(event):
-    plugin_name = event.data_match.group(1).decode("UTF-8")
+    event.data_match.group(1).decode("UTF-8")
     help_string = f"Module Name - `{module_name}`\n"
     try:
         for i in HELP[module_name]:
@@ -406,7 +403,6 @@ def page_num(page_number, loaded_modules, prefix, type):
         multi = emoji
     else:
         multi = "✘"
-    helpable_plugins = []
     global upage
     upage = page_number
     for p in loaded_modules:
