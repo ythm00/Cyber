@@ -18,7 +18,7 @@ from userbot import ALIVE_NAME
 from userbot.core import ALL_MODULES, HELP, LIST
 
 # ================================================#
-notmine = f"This bot is for {OWNER_NAME}"
+notmine = f"This bot is for {ALIVE_NAME}"
 
 TLINK = "https://telegra.ph/file/d9c9bc13647fa1d96e764.jpg"
 helps = get_string("inline_1")
