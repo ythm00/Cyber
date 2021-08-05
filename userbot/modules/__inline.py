@@ -13,8 +13,8 @@ from os import remove
 
 from git import Repo
 from telethon.tl.types import InputBotInlineResult, InputWebDocument
-
-from ..core import ALL_MODULES, HELP, LIST
+from userbot import ALIVE_NAME
+from userbot.core import ALL_MODULES, HELP, LIST
 
 # ================================================#
 notmine = f"This bot is for {OWNER_NAME}"
@@ -65,7 +65,7 @@ async def inline_alive(o):
         MSG = "• **Cyber Userbot •**"
         uptime = time_formatter((time.time() - start_time) * 1000)
         MSG += f"\n\n• **Uptime** - `{uptime}`\n"
-        MSG += f"• **OWNER** - `{OWNER_NAME}`"
+        MSG += f"• **OWNER** - `{ALIVE_NAME}`"
         WEB0 = InputWebDocument(
             "https://telegra.ph/file/55dd0f381c70e72557cb1.jpg", 0, "image/jpg", []
         )
@@ -213,7 +213,7 @@ async def _(event):
 @callback("hrrrr")
 @owner
 async def on_plug_in_callback_query_handler(event):
-    xhelps = helps.format(OWNER_NAME, len(ALL_MODULES))
+    xhelps = helps.format(ALIVE_NAME, len(ALL_MODULES))
     buttons = page_num(0, ALL_MODULES, "helpme", "def")
     await event.edit(f"{xhelps}", buttons=buttons, link_preview=False)
 
@@ -251,7 +251,7 @@ async def on_plug_in_callback_query_handler(event):
 @callback("back")
 @owner
 async def backr(event):
-    xhelps = helps.format(OWNER_NAME, len(ALL_MODULES))
+    xhelps = helps.format(ALIVE_NAME, len(ALL_MODULES))
     current_page_number = int(upage)
     buttons = page_num(current_page_number, ALL_MODULES, "helpme", "def")
     await event.edit(
