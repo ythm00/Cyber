@@ -14,7 +14,7 @@ from os import remove
 from git import Repo
 from telethon.tl.types import InputBotInlineResult, InputWebDocument
 
-from ..core import HELP, LIST, ALL_MODULES
+from ..core import ALL_MODULES, HELP, LIST
 
 # ================================================#
 notmine = f"This bot is for {OWNER_NAME}"
