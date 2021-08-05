@@ -6,6 +6,7 @@ from userbot import CMD_HELP
 from userbot.events import register
 
 from ..core import *
+from ..utils import edit_delete
 from ..utils import edit_or_reply
 from . import *
 
@@ -34,13 +35,13 @@ async def _help(cyb):
                     x += "\n© @TeamCyber"
                     await edit_or_reply(cyb, x)
                 except BaseException:
-                    await eod(ult, get_string("help_1").format(plug), time=5)
+                    await edit_delete(cyb, get_string("help_1").format(plug), time=5)
         except BaseException:
             await edit_or_reply(cyb, "Error 🤔 occured.")
     else:
         tgbot = asst.me.username
         try:
-            results = await ult.client.inline_query(tgbot, "cyber")
+            results = await cyb.client.inline_query(tgbot, "cyber")
         except BotMethodInvalidError:
             z = []
             for x in LIST.values():
@@ -76,6 +77,6 @@ async def _help(cyb):
                 get_string("help_2").format(HNDLR),
             )
         except dis:
-            return await eor(cyb, get_string("help_3"))
+            return await edit_or_reply(cyb, get_string("help_3"))
         await results[0].click(cyb.chat_id, reply_to=cyb.reply_to_msg_id, hide_via=True)
         await cyb.delete()
