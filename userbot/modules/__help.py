@@ -5,12 +5,12 @@ from telethon.errors.rpcerrorlist import BotResponseTimeoutError as rep
 from userbot import CMD_HELP
 from userbot.events import register
 
-from ..core import HELP, LIST, MODULES
+from ..core import HELP, LIST, ALLMODULES
 from ..utils import edit_delete, edit_or_reply
 from . import *
 
 
-@register(outgoing=True, pattern=r"^\.helpme")
+@register(outgoing=True, pattern=r"^\.help")
 async def _help(cyb):
     module = cyb.pattern_match.group(1)
     if module:
