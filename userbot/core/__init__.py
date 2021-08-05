@@ -1,4 +1,4 @@
-MODULES = []
+ALlMODULES = []
 HELP = {}
 LOADED = {}
 LIST = {}
