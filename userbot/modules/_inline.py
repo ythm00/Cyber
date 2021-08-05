@@ -298,7 +298,7 @@ async def on_plug_in_callback_query_handler(event):
 )
 @owner
 async def on_plug_in_callback_query_handler(event):
-    event.data_match.group(1).decode("UTF-8")
+    module_name = event.data_match.group(1).decode("UTF-8")
     help_string = f"Module Name - `{module_name}`\n"
     try:
         for i in HELP[module_name]:
@@ -403,6 +403,7 @@ def page_num(page_number, loaded_modules, prefix, type):
         multi = emoji
     else:
         multi = "✘"
+    helpable_modules = []
     global upage
     upage = page_number
     for p in loaded_modules:
