@@ -5,8 +5,8 @@ from telethon.errors.rpcerrorlist import BotResponseTimeoutError as rep
 from userbot import CMD_HELP
 from userbot.events import register
 
-from ..core import HELP, LIST
-from ..utils import edit_delete, edit_or_reply
+from userbot.core import HELP, LIST
+from userbot.utils import edit_delete, edit_or_reply
 
 
 @register(outgoing=True, pattern=r"^\.help")
