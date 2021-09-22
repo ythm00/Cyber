@@ -52,7 +52,7 @@ rarfile
 requests
 scipy
 speedtest-cli
-sqlalchemy<1.4.23
+sqlalchemy<1.4.25
 telegraph
 telethon>=1.14.0
 telethon-session-sqlalchemy
