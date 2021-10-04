@@ -10,7 +10,7 @@ covid
 cowpy
 dnspython
 emoji
-Faker==8.11.0
+Faker==8.16.0
 git+https://github.com/Ncode2014/search-engine-parser
 git+https://github.com/TomyPrs/deezloader
 gitpython
