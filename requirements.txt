@@ -27,6 +27,7 @@ hentai
 heroku3
 html_telegraph_poster
 httplib2
+https://github.com/LonamiWebs/Telethon/archive/v1.24.zip
 humanize
 jikanpy
 js2py
@@ -54,7 +55,6 @@ scipy
 speedtest-cli
 sqlalchemy<1.4.23
 telegraph
-telethon>=1.14.0
 telethon-session-sqlalchemy
 telethon-tgcrypto
 urbandict
